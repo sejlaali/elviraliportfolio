@@ -1,4 +1,8 @@
-/* 1. Reset and Basic Setup */
+/* =========================================
+   1. GLOBAL RESET & FONTS
+   ========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -12,11 +16,50 @@ html {
 body {
   background-color: #000;
   color: #fff;
-  font-family: "Bodoni Moda", serif;
+  font-family: "Bodoni Moda", serif; /* Default for Home Page */
   overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-/* 2. Top Scrolling Marquee */
+/* =========================================
+   2. NAVIGATION (Shared)
+   ========================================= */
+.top-nav {
+  position: fixed;
+  top: 60px; /* Below the top marquee */
+  right: 40px;
+  z-index: 999;
+}
+
+.top-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.top-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-family: "Inter", sans-serif; /* Clean font for Nav */
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0.6;
+  transition: opacity 0.3s;
+}
+
+.top-nav a:hover,
+.top-nav a.active {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+/* =========================================
+   3. MARQUEE (Shared / Home Page)
+   ========================================= */
 .marquee-wrapper {
   width: 100%;
   background-color: #000;
@@ -26,7 +69,7 @@ body {
   white-space: nowrap;
   position: fixed;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
 }
 
 .marquee-wrapper-second {
@@ -40,6 +83,7 @@ body {
 .marquee {
   display: inline-block;
   animation: scroll 30s linear infinite;
+  font-family: "Bodoni Moda", serif;
   font-size: 0.9rem;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -47,53 +91,24 @@ body {
 }
 
 @keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
-/* 3. Navigation */
-.top-nav {
-  position: fixed;
-  top: 60px;
-  right: 40px;
-  z-index: 101;
-}
+/* =========================================
+   4. HOME PAGE STYLES (index.html)
+   ========================================= */
 
-.top-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 30px;
-}
-
-.top-nav a {
-  color: #fff;
-  text-decoration: none;
-  font-family: sans-serif;
-  font-size: 0.8rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  opacity: 0.7;
-  transition: opacity 0.3s;
-}
-
-.top-nav a:hover {
-  opacity: 1;
-  text-decoration: underline;
-}
-
-/* 4. Hero Section */
+/* Hero Section */
 .hero {
-  height: 80vh;
+  height: 75vh;
   width: 100%;
   position: relative;
   display: flex;
   align-items: center;
   padding-left: 5vw;
   overflow: hidden;
+  margin-top: 50px; /* Push down for fixed marquee */
 }
 
 .video-container {
@@ -127,7 +142,6 @@ body {
   max-width: 900px;
   position: relative;
   z-index: 2;
-  font-family: "Bodoni Moda", serif;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
@@ -137,13 +151,13 @@ body {
   line-height: 0.9;
 }
 
-/* 5. The Work Grid (UPDATED) */
+/* Work Grid */
 .work-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   width: 100%;
-  gap: 20px; /* Spacing between projects */
-  padding: 20px; /* Spacing from screen edges */
+  gap: 20px;
+  padding: 20px;
 }
 
 .grid-item {
@@ -168,143 +182,40 @@ body {
   grid-column: span 2;
 }
 
-/* 6. About Section (UPDATED) */
-.about-section {
-  padding: 100px 5vw;
-  background-color: #050505;
-  color: #fff;
+.center-last {
+  grid-column: 1 / span 3;
 }
 
-/* Container to hold Image + Text side by side */
-.about-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center; /* Centers vertically */
-  gap: 60px; /* Space between photo and text */
-}
-
-.about-image {
-  flex: 1; /* Takes up half the space */
-  max-width: 400px;
-}
-
-.about-image img {
-  width: 100%;
-  height: auto;
-  display: block;
-  filter: grayscale(100%); /* Makes the portrait black & white to fit theme */
-}
-
-.about-content {
-  flex: 1; /* Takes up the other half */
-  text-align: left;
-}
-
-.about-content h2 {
-  font-size: 3rem;
-  margin-bottom: 30px;
-  font-weight: 400;
-}
-
-.about-content p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin-bottom: 20px;
-  color: #ccc;
-}
-
-.contact-link a {
-  color: #fff;
-  font-size: 1.2rem;
-  text-decoration: none;
-  border-bottom: 1px solid #fff;
-  padding-bottom: 5px;
-}
-
-/* Mobile Adjustments */
-@media (max-width: 900px) {
-  .work-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-  .wide {
-    grid-column: span 2;
-  }
-
-  /* Stack About section on tablet */
-  .about-container {
-    flex-direction: column;
-  }
-  .about-image {
-    max-width: 100%;
-    margin-bottom: 30px;
-  }
-}
-
-@media (max-width: 768px) {
-  .hero-text {
-    font-size: 2.5rem;
-    padding-right: 20px;
-  }
-  .top-nav {
-    right: 20px;
-    top: 55px;
-  }
-}
-
-@media (max-width: 600px) {
-  .work-grid {
-    grid-template-columns: 1fr;
-  }
-  .wide {
-    grid-column: span 1;
-  }
-}
-
-/* 7. Footer */
-footer {
-  text-align: center;
-  padding: 40px;
-  font-size: 0.8rem;
-  color: #666;
-  font-family: sans-serif;
-}
-
-/* --- HOVER EFFECTS FOR GRID --- */
-
-/* Make the link fill the grid box */
+/* Project Hover Overlay */
 .project-link {
   display: block;
   width: 100%;
   height: 100%;
-  position: relative; /* Needed for absolute positioning of overlay */
+  position: relative;
   text-decoration: none;
 }
 
-/* The Overlay Container */
 .project-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7); /* Dark see-through background */
+  background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  opacity: 0; /* Hidden by default */
+  opacity: 0;
   transition: opacity 0.4s ease;
   text-align: center;
   padding: 20px;
 }
 
-/* Show overlay on hover */
 .project-link:hover .project-overlay {
   opacity: 1;
 }
 
-/* Typography for the hover text */
 .project-overlay h3 {
   color: #fff;
   font-family: "Playfair Display", serif;
@@ -316,8 +227,406 @@ footer {
 
 .project-overlay span {
   color: #ccc;
-  font-family: sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 2px;
+}
+
+/* =========================================
+   5. ABOUT PAGE STYLES (about.html)
+   ========================================= */
+
+/* The Moving Ambient Background */
+.ambient-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+  background: #050505;
+}
+
+.light-orb {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80vw;
+  height: 80vw;
+  background: radial-gradient(
+    circle, 
+    rgba(200, 50, 50, 0.15) 0%, 
+    rgba(100, 20, 20, 0.05) 40%, 
+    transparent 70%
+  );
+  filter: blur(80px);
+  transform: translate(-50%, -50%);
+  animation: floatLight 15s infinite alternate ease-in-out;
+}
+
+.noise-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+@keyframes floatLight {
+  0% { transform: translate(-60%, -60%) scale(1); }
+  50% { transform: translate(-40%, -40%) scale(1.2); }
+  100% { transform: translate(-50%, -30%) scale(0.9); }
+}
+
+/* About Layout Container */
+.about-page-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 140px 20px 60px; /* Top padding clears fixed nav/marquee */
+}
+
+/* Intro Headline */
+.intro-headline {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.intro-headline h1 {
+  font-family: "Bodoni Moda", serif;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.highlight-text {
+  font-style: italic;
+  color: #ccc;
+}
+
+/* Cinematic Visual */
+.cinematic-visual {
+  width: 100%;
+  margin-bottom: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: grayscale(100%) contrast(1.1) brightness(0.9);
+}
+
+.visual-overlay-text {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  max-width: 300px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #eee;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+}
+
+/* Split Grid Details */
+.details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  max-width: 1000px;
+  margin: 0 auto 100px;
+}
+
+.col-left, .col-right {
+  font-family: "Inter", sans-serif;
+}
+
+.orange-label {
+  display: block;
+  color: #d84315;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.lead-text {
+  font-size: 1.5rem;
+  line-height: 1.4;
+  margin-bottom: 30px;
+  font-weight: 400;
+  color: #fff;
+}
+
+.sub-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #aaa;
+  margin-bottom: 40px;
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: #fff;
+  border-top: 1px solid #333;
+  padding-top: 20px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background: #2ecc71;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(46, 204, 113, 0.4);
+}
+
+/* Client List */
+.client-list {
+  list-style: none;
+  columns: 2;
+  margin-bottom: 60px;
+}
+
+.client-list li {
+  font-size: 1rem;
+  color: #ccc;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+/* Contact Area */
+.contact-area {
+  border-top: 1px solid #333;
+  padding-top: 30px;
+}
+
+.email-link {
+  font-family: "Bodoni Moda", serif;
+  font-size: 1.8rem;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.email-link:hover {
+  color: #d84315;
+}
+
+/* =========================================
+   6. FOOTER (Shared)
+   ========================================= */
+footer {
+  text-align: center;
+  padding: 40px;
+  font-size: 0.8rem;
+  color: #666;
+  font-family: "Inter", sans-serif;
+  margin-top: auto;
+  border-top: 1px solid #1a1a1a;
+}
+
+/* =========================================
+   7. RESPONSIVE ADJUSTMENTS
+   ========================================= */
+@media (max-width: 900px) {
+  /* Home Grid */
+  .work-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .wide, .center-last {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Navigation */
+  .top-nav {
+    right: 20px;
+    top: 55px;
+  }
+
+  /* Home Text */
+  .hero-text {
+    font-size: 2.5rem;
+    padding-right: 20px;
+  }
+
+  /* About Page Layout */
+  .details-grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  
+  .intro-headline {
+    margin-bottom: 40px;
+  }
+  
+  .client-list {
+    columns: 2;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Home Grid Single Column */
+  .work-grid {
+    grid-template-columns: 1fr;
+  }
+  .wide, .center-last {
+    grid-column: span 1;
+  }
+}
+
+/* =========================================
+   8. CUSTOM PRELOADER
+   ========================================= */
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #000;
+  z-index: 9999; /* On top of everything */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: opacity 0.8s ease-in-out, visibility 0.8s;
+}
+
+/* Hide loader when finished */
+.preloader.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader-content {
+  text-align: center;
+  position: relative;
+  width: 300px;
+}
+
+.counter-wrapper {
+  font-family: "Bodoni Moda", serif;
+  font-size: 4rem; /* Huge text */
+  color: #fff;
+  font-weight: 400;
+  line-height: 1;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.percent {
+  font-size: 2rem; /* Smaller % symbol */
+  vertical-align: top;
+  margin-left: -10px;
+  opacity: 0.5;
+}
+
+.loading-bar {
+  width: 100%;
+  height: 2px;
+  background-color: #333;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.bar-fill {
+  width: 0%;
+  height: 100%;
+  background-color: #fff;
+  /* Animation handled by JS for synchronization */
+}
+
+.loader-text {
+  font-family: "Inter", sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  color: #666;
+  text-transform: uppercase;
+}
+
+/* =========================================
+   HERO RED AURORA ANIMATION
+   ========================================= */
+
+.hero-aurora {
+  position: absolute;
+  /* Centers the glow relative to the hero section */
+  top: 50%;
+  left: 30%; 
+  transform: translate(-50%, -50%);
+  
+  width: 50vw;
+  height: 50vw;
+  
+  /* The Gradient: Deep Red core fading to transparent */
+  background: radial-gradient(
+    circle, 
+    rgba(220, 20, 20, 0.80) 0%,   /* Core Red */
+    rgba(100, 0, 0, 0.1) 40%,     /* Darker fade */
+    transparent 70%
+  );
+  
+  /* Heavy blur makes it look like light/smoke */
+  filter: blur(100px);
+  
+  /* Z-Index: Sits on top of video (0), but below text (2) */
+  z-index: 1; 
+  
+  /* The Animation */
+  animation: auroraMove 12s infinite alternate ease-in-out;
+  
+  /* Blends with the video underneath for a cinematic look */
+  mix-blend-mode: screen; 
+  pointer-events: none;
+}
+
+/* Make sure text stays on top */
+.hero-text {
+  z-index: 2; /* Already in your CSS, but good to double check */
+}
+
+/* The Moving Animation */
+@keyframes auroraMove {
+  0% {
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(-40%, -60%) scale(1.2) rotate(10deg);
+    opacity: 0.8; /* Gets brighter */
+  }
+  100% {
+    transform: translate(-60%, -40%) scale(1.1) rotate(-10deg);
+    opacity: 0.6;
+  }
+}
+
+/* Mobile Adjustment: Make it smaller so it doesn't flood the screen */
+@media (max-width: 768px) {
+  .hero-aurora {
+    width: 90vw;
+    height: 90vw;
+    filter: blur(60px);
+    opacity: 0.5;
+  }
 }

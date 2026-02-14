@@ -15,6 +15,21 @@
     />
   </head>
   <body>
+    <body>
+      <!-- preloader -->
+  <div class="preloader">
+    <div class="loader-content">
+      <div class="counter-wrapper">
+        <span class="counter">0</span>
+        <span class="percent">%</span>
+      </div>
+      <div class="loading-bar">
+        <div class="bar-fill"></div>
+      </div>
+      <div class="loader-text">ELVIR ALI &copy; 2026</div>
+    </div>
+  </div>
+
     <!-- Top Scrolling Marquee -->
     <div class="marquee-wrapper">
       <div class="marquee">
@@ -38,20 +53,23 @@
     <!-- Navigation -->
     <nav class="top-nav">
       <ul>
-        <li><a href="#work">WORK</a></li>
-        <li><a href="#about">ABOUT</a></li>
+        <li><a href="index.html" class="active">WORK</a></li>
+        <li><a href="about.html">ABOUT</a></li>
       </ul>
     </nav>
 
-    <!-- Hero / Intro Section -->
+   <!-- Hero / Intro Section -->
     <header class="hero">
       <div class="video-container">
         <video autoplay muted loop playsinline class="back-video">
-          <!-- RENAME YOUR VIDEO FILE TO 'header-video.mp4' -->
-          <source src="assets/header-video.mp4" type="video/mp4" />
+          <!-- Make sure your video file is correct! -->
+          <!-- <source src="assets/header-video.mp4" type="video/mp4" /> -->
         </video>
         <div class="overlay"></div>
       </div>
+
+      <!-- NEW: The Moving Red Gradient -->
+      <div class="hero-aurora"></div>
 
       <div class="hero-text">
         I’m ELVIR ALI. <br />A Brooklyn-based
@@ -61,7 +79,7 @@
       </div>
     </header>
 
-    <!-- Top Scrolling Marquee -->
+    <!-- Second Scrolling Marquee -->
     <div class="marquee-wrapper-second">
       <div class="marquee">
         <span
@@ -79,152 +97,75 @@
       </div>
     </div>
 
-    <!-- The Image Grid (10 Items) -->
+    <!-- The Image Grid (5 Items) -->
     <section id="work" class="work-grid">
-      <!-- 1. Boston (Wide) -->
+      
+      <!-- 1. Balad Beast 2026 (Wide) -->
       <div class="grid-item wide">
-        <a href="project-1.html" class="project-link">
-          <img src="assets/boston.jpg" alt="Boston" />
+        <a href="/projects/balad_beast_2026.html" class="project-link">
+          <!-- Update src with your Cloudinary link -->
+          <img src="https://res.cloudinary.com/dozkrpikv/image/upload/v1770955692/MDLBEAST2026_thursday_JR-personal_edits-JRZ_4309_dstclb.jpg" alt="Balad Beast" />
           <div class="project-overlay">
-            <h3>BOSTON</h3>
-            <span>Photography</span>
+            <h3>BALAD BEAST</h3>
+            <span>2026 Experience</span>
           </div>
         </a>
       </div>
 
-      <!-- 2. Call of Duty -->
-      <div class="grid-item tall">
+      <!-- 2. Call of Duty - Endowment Pack (Tall/Regular) -->
+      <div class="grid-item">
         <a href="project-2.html" class="project-link">
-          <img src="assets/callofduty_next.jpg" alt="Call of Duty Next" />
+          <!-- Update src with your Cloudinary link -->
+          <img src="https://res.cloudinary.com/dozkrpikv/image/upload/v1770955696/05_qelxqc.jpg" alt="CoD Endowment" />
           <div class="project-overlay">
-            <h3>CALL OF DUTY: NEXT</h3>
-            <span>Event Production</span>
+            <h3>COD: ENDOWMENT</h3>
+            <span>Trailer 2025</span>
           </div>
         </a>
       </div>
 
-      <!-- 3. Interview -->
+      <!-- 3. Call of Duty - WSOW (Regular) -->
       <div class="grid-item">
         <a href="project-3.html" class="project-link">
-          <img src="assets/interview.jpg" alt="Interview" />
+          <!-- Update src with your Cloudinary link -->
+          <img src="assets/interview.jpg" alt="WSOW" />
           <div class="project-overlay">
-            <h3>THE INTERVIEW</h3>
-            <span>Documentary</span>
+            <h3>COD: WSOW</h3>
+            <span>Launch Video</span>
           </div>
         </a>
       </div>
 
-      <!-- 4. Rockstars -->
-      <div class="grid-item">
+      <!-- 4. Fanatics x Topps 2026 (Wide) -->
+      <div class="grid-item wide">
         <a href="project-4.html" class="project-link">
-          <img src="assets/rockstars.JPG" alt="Rockstars" />
+          <!-- Update src with your Cloudinary link -->
+          <img src="https://res.cloudinary.com/dozkrpikv/image/upload/v1771026350/FANATICS_EP1_-_Chrome.00_08_37_08.Still003_jlxm1g.png" alt="Fanatics x Topps" />
           <div class="project-overlay">
-            <h3>ROCKSTARS</h3>
-            <span>Music Video</span>
+            <h3>FANATICS x TOPPS</h3>
+            <span>2026 Campaign</span>
           </div>
         </a>
       </div>
 
-      <!-- 5. Boston Copy (Wide) -->
-      <div class="grid-item wide">
+      <!-- 5. Cards on the Table: Kevin Smith (Wide to close out) -->
+      <div class="grid-item wide center-last">
         <a href="project-5.html" class="project-link">
-          <img src="assets/boston.jpg" alt="Boston Work" />
+          <!-- Update src with your Cloudinary link -->
+          <img src="assets/boston.jpg" alt="Cards on the Table" />
           <div class="project-overlay">
-            <h3>CAMPAIGN V2</h3>
-            <span>Commercial</span>
+            <h3>CARDS ON THE TABLE</h3>
+            <span>Kevin Smith</span>
           </div>
         </a>
       </div>
 
-      <!-- 6. COD Copy -->
-      <div class="grid-item">
-        <a href="project-6.html" class="project-link">
-          <img src="assets/callofduty_next.jpg" alt="Gaming Event" />
-          <div class="project-overlay">
-            <h3>WARZONE</h3>
-            <span>Live Event</span>
-          </div>
-        </a>
-      </div>
-
-      <!-- 7. Interview Copy (Wide) -->
-      <div class="grid-item wide">
-        <a href="project-7.html" class="project-link">
-          <img src="assets/interview.jpg" alt="Interview Set" />
-          <div class="project-overlay">
-            <h3>BEHIND THE SCENES</h3>
-            <span>Editorial</span>
-          </div>
-        </a>
-      </div>
-
-      <!-- 8. Rockstars Copy -->
-      <div class="grid-item">
-        <a href="project-8.html" class="project-link">
-          <img src="assets/rockstars.JPG" alt="Band Photo" />
-          <div class="project-overlay">
-            <h3>TOUR LIFE</h3>
-            <span>Photography</span>
-          </div>
-        </a>
-      </div>
-
-      <!-- 9. Boston Copy -->
-      <div class="grid-item">
-        <a href="project-9.html" class="project-link">
-          <img src="assets/boston.jpg" alt="Boston City" />
-          <div class="project-overlay">
-            <h3>URBAN STUDY</h3>
-            <span>Personal</span>
-          </div>
-        </a>
-      </div>
-
-      <!-- 10. COD Copy (Wide to finish layout) -->
-      <div class="grid-item wide">
-        <a href="project-10.html" class="project-link">
-          <img src="assets/callofduty_next.jpg" alt="COD Finale" />
-          <div class="project-overlay">
-            <h3>LAUNCH DAY</h3>
-            <span>Production</span>
-          </div>
-        </a>
-      </div>
-    </section>
-
-    <!-- About Section (Two Columns) -->
-    <section id="about" class="about-section">
-      <div class="about-container">
-        <!-- YOUR PORTRAIT HERE: Rename your photo to 'portrait.jpg' -->
-        <div class="about-image">
-          <img src="/assets/elvir_ali_portrait.webp" alt="Elvir Portrait" />
-        </div>
-
-        <div class="about-content">
-          <h2>About Me</h2>
-          <p>
-            I am a multidisciplinary creative director and producer based in
-            Brooklyn. My work spans across music videos, commercial advertising,
-            and brand identity. I believe in storytelling that disrupts the norm
-            and creates lasting cultural impact.
-          </p>
-          <p>
-            Clients worked with: Call of Duty, NBA, Riot Games, MLS, Amazon,
-            AT&T, Ubisoft, Topps, Twitch, EA, Faze, Optic, Redbull, Tencent,
-            NHL, Konami, Epic Games, DoorDash, Capcom, Capital One, Stellantis,
-            Mountain Dew, Ruffles, Epic Games, Fanatics, Elgato, Corsair.
-          </p>
-          <p>Currently working at OS Studios.</p>
-          <div class="contact-link">
-            <a href="mailto:elviralinyc@gmail.com">Get in Touch &rarr;</a>
-          </div>
-        </div>
-      </div>
     </section>
 
     <footer>
       <p>&copy; 2026 ELVIR ALI. All Rights Reserved.</p>
     </footer>
+
+    <script src="script.js"></script>
   </body>
-  
 </html>
