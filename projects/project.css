@@ -90,7 +90,7 @@
 .info-wrapper h2 {
   font-family: "Bodoni Moda", serif;
   font-size: 2rem;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   color: #fff;
 }
 
@@ -99,7 +99,7 @@
   font-size: 1rem;
   line-height: 1.6;
   color: #ccc;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 /* Credits Box */
@@ -200,6 +200,7 @@
   border-top: 1px solid #222;
   background: #000;
   text-decoration: none;
+  text-align: center;
   transition: background 0.5s ease;
 }
 
@@ -245,7 +246,7 @@
   .info-wrapper {
     position: relative;
     top: 0;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
     padding-right: 0;
     border-bottom: 1px solid #222;
     padding-bottom: 40px;
