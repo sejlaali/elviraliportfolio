@@ -14,6 +14,11 @@
   margin-top: 60px; /* Offset for Fixed Nav */
 }
 
+.top-nav {
+  right: 20px;
+  top: 20px; /* Adjusted for better spacing */
+}
+
 .hero-media {
   position: absolute;
   top: 0;
@@ -71,9 +76,10 @@
   gap: 40px;
   max-width: 1600px;
   margin: 0 auto;
-  padding: 100px 20px;
+  padding: 60px 20px;
   position: relative;
 }
+
 
 /* Left Column: Sticky Information */
 .sticky-col {
@@ -83,7 +89,7 @@
 
 .info-wrapper {
   position: sticky;
-  top: 150px; /* Stops 150px from top of screen */
+  top: 80px; /* Stops 150px from top of screen */
   padding-right: 20px;
 }
 
@@ -162,7 +168,13 @@
 
 .gallery-item.half {
   flex: 1;
+
+  .codpod-video {
+  /* This is a special class for the CODPOD video to make it taller */
+  grid-row: span 2; /* Makes it span 2 rows, making it taller */
 }
+}
+
 
 .caption {
   display: block;
