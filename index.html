@@ -1,184 +1,1009 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Elvir Ali | Creative Producer</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="icon" href="/assets/favicon.ico" type="image/png" />
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
-      rel="stylesheet"s
-    />
-    <!-- Primary Meta Tags -->
-<meta name="title" content="Elvir Ali | Creative Producer">
-<meta name="description" content="Brooklyn-based Creative Producer working with brands like Call of Duty, Ubisoft, and Fanatics. Making culture, not commercials.">
-<meta name="keywords" content="creative producer, Brooklyn, Call of Duty, Ubisoft, content production, video production">
-<meta name="author" content="Elvir Ali">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Elvir Ali — Creative Producer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
-<!-- Open Graph (for link previews on social/Slack/iMessage) -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://elvirali.com/">
-<meta property="og:title" content="Elvir Ali | Creative Producer">
-<meta property="og:description" content="Brooklyn-based Creative Producer.">
-<meta property="og:image" content="https://res.cloudinary.com/dozkrpikv/image/upload/v1770955669/Without_Grain_dyfetr.jpg">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Elvir Ali | Creative Producer">
-<meta name="twitter:description" content="Brooklyn-based Creative Producer.">
-<meta name="twitter:image" content="https://elvirali.com/assets/og-image.jpg">
-  </head>
-  <body>
-    <body>
+<style>
+:root {
+  --bg: #f4f1ec;
+  --bg-alt: #ece8e0;
+  --ink: #161616;
+  --ink-soft: #5a5a5a;
+  --rule: rgba(22, 22, 22, 0.14);
+  --accent: #161616;
+  --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --serif: "Instrument Serif", "Times New Roman", serif;
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
 
-    <!-- Top Scrolling Marquee -->
-    <div class="marquee-wrapper">
-      <div class="marquee">
-        <span
-          >CREATIVE PRODUCER &nbsp;&nbsp;&nbsp; ELVIR ALI &nbsp;&nbsp;&nbsp;
-          CREATIVE PRODUCER &nbsp;&nbsp;&nbsp; ELVIR ALI &nbsp;&nbsp;&nbsp;
-          CREATIVE PRODUCER &nbsp;&nbsp;&nbsp; ELVIR ALI &nbsp;&nbsp;&nbsp;
-          CREATIVE PRODUCER &nbsp;&nbsp;&nbsp; ELVIR ALI
-          &nbsp;&nbsp;&nbsp;</span
-        >
-        <span
-          >CREATIVE PRODUCER &nbsp;&nbsp;&nbsp; ELVIR ALI &nbsp;&nbsp;&nbsp;
-          CREATIVE PRODUCER &nbsp;&nbsp;&nbsp; ELVIR ALI &nbsp;&nbsp;&nbsp;
-          CREATIVE PRODUCER &nbsp;&nbsp;&nbsp; ELVIR ALI &nbsp;&nbsp;&nbsp;
-          CREATIVE PRODUCER &nbsp;&nbsp;&nbsp; ELVIR ALI
-          &nbsp;&nbsp;&nbsp;</span
-        >
-      </div>
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.005em;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ── NAV ──────────────────────────────────────────── */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 32px;
+  background: color-mix(in oklab, var(--bg) 88%, transparent);
+  backdrop-filter: saturate(160%) blur(8px);
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.nav-links { display: flex; gap: 28px; }
+.nav-link {
+  position: relative;
+  padding: 4px 0;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+.nav-link:hover { opacity: 1; }
+.nav-link.active { opacity: 1; }
+.nav-link.active::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -2px;
+  height: 1px; background: var(--ink);
+}
+
+/* ── HERO ─────────────────────────────────────────── */
+.hero {
+  padding: 96px 32px 56px;
+  border-bottom: 1px solid var(--rule);
+}
+.hero-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+}
+.hero-tag {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.hero-tag::before {
+  content: ""; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--ink); display: inline-block;
+}
+.hero-title {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: clamp(40px, 5.6vw, 88px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin: 0;
+  max-width: 18ch;
+}
+.hero-title em {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  font-size: 0.92em;
+}
+.hero-meta {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 24px;
+  margin-top: 32px;
+  align-items: start;
+}
+.hero-bio {
+  grid-column: 1 / span 6;
+  font-size: 17px;
+  line-height: 1.5;
+  max-width: 52ch;
+  color: var(--ink);
+}
+.hero-side {
+  grid-column: 9 / span 4;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.hero-side b { color: var(--ink); font-weight: 500; }
+
+/* ── MARQUEE ──────────────────────────────────────── */
+.marquee {
+  overflow: hidden;
+  border-bottom: 1px solid var(--rule);
+  padding: 22px 0;
+  white-space: nowrap;
+  background: var(--bg);
+}
+.marquee-track {
+  display: inline-flex;
+  gap: 48px;
+  animation: marquee 28s linear infinite;
+  font-family: var(--sans);
+  font-size: clamp(28px, 5vw, 56px);
+  letter-spacing: -0.02em;
+}
+.marquee-track span { display: inline-flex; align-items: center; gap: 48px; }
+.marquee-track span::after {
+  content: "";
+  display: inline-block;
+  width: 0.55em;
+  height: 0.55em;
+  background-color: currentColor;
+  /* asterisk-burst mark, 8 thin rays */
+  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><g stroke='black' stroke-width='1.6' stroke-linecap='round'><line x1='12' y1='2' x2='12' y2='22'/><line x1='2' y1='12' x2='22' y2='12'/><line x1='4.9' y1='4.9' x2='19.1' y2='19.1'/><line x1='19.1' y1='4.9' x2='4.9' y2='19.1'/></g></svg>") center / contain no-repeat;
+          mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><g stroke='black' stroke-width='1.6' stroke-linecap='round'><line x1='12' y1='2' x2='12' y2='22'/><line x1='2' y1='12' x2='22' y2='12'/><line x1='4.9' y1='4.9' x2='19.1' y2='19.1'/><line x1='19.1' y1='4.9' x2='4.9' y2='19.1'/></g></svg>") center / contain no-repeat;
+  opacity: 0.75;
+  transform: translateY(-0.04em);
+  animation: markSpin 8s linear infinite;
+}
+@keyframes markSpin {
+  to { transform: translateY(-0.04em) rotate(360deg); }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ── SECTION CAPS ─────────────────────────────────── */
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 56px 32px 24px;
+  max-width: 1440px;
+  margin: 0 auto;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.section-head .index { color: var(--ink); }
+
+/* ── PROJECT GRID ─────────────────────────────────── */
+.work {
+  padding: 0 32px 80px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 24px;
+  row-gap: 64px;
+}
+
+/* Mixed staggered: 1/2, 1/2, 1/3, 1/3, 1/3, 2/3-centered */
+.grid[data-layout="mixed"] .card[data-i="0"] { grid-column: 1 / span 3; }
+.grid[data-layout="mixed"] .card[data-i="1"] { grid-column: 4 / span 3; margin-top: 80px; }
+.grid[data-layout="mixed"] .card[data-i="2"] { grid-column: 1 / span 2; }
+.grid[data-layout="mixed"] .card[data-i="3"] { grid-column: 3 / span 2; margin-top: 48px; }
+.grid[data-layout="mixed"] .card[data-i="4"] { grid-column: 5 / span 2; }
+.grid[data-layout="mixed"] .card[data-i="5"] { grid-column: 2 / span 4; }
+
+.grid[data-layout="two"] .card { grid-column: span 3; }
+.grid[data-layout="three"] .card { grid-column: span 2; }
+
+/* ── CARD ─────────────────────────────────────────── */
+.card {
+  display: block;
+  cursor: pointer;
+  position: relative;
+}
+.card-media {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-alt);
+  aspect-ratio: 4 / 5;
+}
+.grid[data-layout="mixed"] .card[data-i="0"] .card-media,
+.grid[data-layout="mixed"] .card[data-i="1"] .card-media,
+.grid[data-layout="mixed"] .card[data-i="5"] .card-media {
+  aspect-ratio: 16 / 10;
+}
+.grid[data-layout="three"] .card-media { aspect-ratio: 1 / 1; }
+.grid[data-layout="two"] .card-media { aspect-ratio: 16 / 10; }
+
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1), filter 0.5s;
+}
+
+/* Black overlay tint so the client logo reads cleanly */
+.card-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.32);
+  pointer-events: none;
+  transition: background 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.card:hover .card-media::after { background: rgba(0, 0, 0, 0.42); }
+
+/* Centered semi-transparent client logo overlay on each cover */
+.card-client-logo {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  padding: 8%;
+  z-index: 3;
+  transition: opacity 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.card-client-logo img {
+  max-width: 80%;
+  max-height: 58%;
+  object-fit: contain;
+  opacity: 0.96;
+  filter: drop-shadow(0 2px 24px rgba(0, 0, 0, 0.5));
+  transition: opacity 0.5s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.card-client-logo.is-white img {
+  filter: brightness(0) invert(1) drop-shadow(0 2px 24px rgba(0, 0, 0, 0.5));
+}
+.card:hover .card-client-logo img { opacity: 1; transform: scale(1.03); }
+
+/* Hover variants */
+.card[data-hover="zoom"]:hover .card-img { transform: scale(1.04); }
+.card[data-hover="zoom"] .card-overlay { display: none; }
+
+.card[data-hover="reveal"] .card-overlay {
+  position: absolute; inset: 0;
+  display: flex; align-items: flex-end; justify-content: space-between;
+  padding: 16px;
+  background: linear-gradient(to top, rgba(22,22,22,0.55), rgba(22,22,22,0) 60%);
+  opacity: 0; transition: opacity 0.35s;
+  color: #fff;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.card[data-hover="reveal"]:hover .card-overlay { opacity: 1; }
+.card[data-hover="reveal"]:hover .card-img { transform: scale(1.02); }
+
+.card[data-hover="none"] .card-overlay { display: none; }
+
+.card-caption {
+  margin-top: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+.card-caption-left { min-width: 0; }
+.card-role {
+  display: block;
+  margin-top: 6px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.card-meta { padding-top: 3px; }
+.card-title {
+  font-family: var(--sans);
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+.card-title em {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.05em;
+  letter-spacing: 0;
+  color: var(--ink-soft);
+}
+.card-meta {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+/* When type style is serif, hero & card titles use serif */
+body[data-type="serif"] .hero-title { font-family: var(--serif); font-style: italic; letter-spacing: -0.02em; line-height: 0.95; }
+body[data-type="serif"] .hero-title em { font-family: var(--sans); font-style: normal; }
+body[data-type="serif"] .card-title { font-family: var(--serif); font-style: italic; font-size: 19px; letter-spacing: 0; font-weight: 400; }
+
+/* ── ABOUT ────────────────────────────────────────── */
+.about {
+  border-top: 1px solid var(--rule);
+  background: var(--bg);
+  padding: 80px 32px;
+}
+.about-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 32px;
+}
+.about-portrait {
+  grid-column: 1 / span 4;
+  aspect-ratio: 4 / 5;
+  background: var(--bg-alt);
+  overflow: hidden;
+  position: relative;
+}
+.about-portrait img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(0.15); }
+.about-body { grid-column: 6 / span 6; padding-top: 24px; }
+.about-eyebrow {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink-soft); margin-bottom: 16px;
+}
+.about-headline {
+  font-family: var(--sans);
+  font-size: clamp(28px, 3.4vw, 44px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-weight: 400;
+  margin: 0 0 28px;
+}
+.about-headline em { font-family: var(--serif); font-style: italic; }
+.about-text { font-size: 16px; line-height: 1.55; max-width: 56ch; }
+.about-text p { margin: 0 0 14px; }
+.about-text p.muted { color: var(--ink-soft); }
+
+/* Clients */
+.clients {
+  border-top: 1px solid var(--rule);
+  padding: 48px 32px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.clients-head {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink-soft); margin-bottom: 28px;
+}
+.clients-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 4px 32px;
+}
+.client {
+  font-family: var(--sans);
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  padding: 14px 0;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.client::before {
+  content: "";
+  width: 5px; height: 5px;
+  background: var(--ink);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* ── CONTACT / FOOTER ─────────────────────────────── */
+.contact {
+  border-top: 1px solid var(--rule);
+  padding: 120px 32px 48px;
+}
+.contact-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  display: block;
+}
+.contact-label {
+  display: block; text-align: center;
+  font-family: var(--mono); font-size: 15px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--ink);
+  margin-bottom: 48px;
+}
+.contact-lead { margin: 0; }
+.contact-head {
+  font-family: var(--sans); font-weight: 400;
+  font-size: clamp(34px, 4.4vw, 60px); line-height: 1.0;
+  letter-spacing: -0.03em; margin: 0; max-width: 12ch;
+}
+.contact-head em { font-family: var(--serif); font-style: italic; }
+.contact-list {
+  display: flex; flex-direction: column;
+}
+.contact-row {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 24px; padding: 20px 2px;
+  border-top: 1px solid var(--rule);
+  transition: padding-left 0.45s cubic-bezier(0.2,0.7,0.2,1);
+}
+.contact-row:last-child { border-bottom: 1px solid var(--rule); }
+.contact-row .cr-k {
+  flex: none;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink-soft);
+}
+.contact-row .cr-v {
+  font-family: var(--mono); font-style: normal; font-weight: 500;
+  font-size: clamp(15px, 1.4vw, 19px); letter-spacing: 0.01em; text-align: right;
+  text-transform: none; white-space: nowrap;
+  color: var(--ink); line-height: 1;
+  background: linear-gradient(currentColor, currentColor) 0 100%/0 1px no-repeat;
+  transition: background-size 0.45s cubic-bezier(0.2,0.7,0.2,1);
+}
+.contact-row:hover { padding-left: 12px; }
+.contact-row:hover .cr-v { background-size: 100% 1px; }
+.contact-foot {
+  display: flex; justify-content: space-between;
+  margin-top: 56px; padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--ink-soft);
+}
+
+/* ── MOBILE ───────────────────────────────────────── */
+@media (max-width: 860px) {
+  .nav { padding: 14px 20px; }
+  .hero { padding: 56px 20px 40px; }
+  .hero-meta { grid-template-columns: 1fr; gap: 24px; }
+  .hero-bio, .hero-side { grid-column: 1; }
+  .work, .section-head, .about, .clients, .contact { padding-left: 20px; padding-right: 20px; }
+  .grid { grid-template-columns: repeat(2, 1fr); row-gap: 40px; gap: 16px; }
+  .grid[data-layout] .card { grid-column: span 1 !important; margin-top: 0 !important; }
+  .grid[data-layout] .card .card-media { aspect-ratio: 4/5 !important; }
+  .about-inner { grid-template-columns: 1fr; }
+  .about-portrait { grid-column: 1; max-width: 320px; }
+  .about-body { grid-column: 1; padding-top: 0; }
+  .contact-prompt, .contact-meta, .contact-lead, .contact-list, .contact-foot { grid-column: 1 / -1; }
+  .contact-meta { flex-direction: column; gap: 12px; }
+  .contact { padding-top: 72px; }
+  .contact-row .cr-v { font-size: 18px; }
+  .contact-foot { flex-direction: column; gap: 10px; }
+}
+
+/* ── CLIENTS LOGO STRIP ───────────────────────────── */
+.logo-strip {
+  border-top: 1px solid var(--rule);
+  padding: 56px 32px;
+}
+.logo-strip-inner { max-width: 1440px; margin: 0 auto; }
+.logo-strip-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink-soft);
+  margin-bottom: 40px;
+}
+.logo-strip-row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0;
+  align-items: center;
+}
+.ls-cell {
+  height: 140px;
+  display: flex; align-items: center; justify-content: center;
+  padding: 18px 28px;
+  position: relative;
+}
+.ls-cell + .ls-cell::before {
+  content: ""; position: absolute;
+  left: 0; top: 22%; bottom: 22%; width: 1px;
+  background: var(--rule);
+}
+.ls-cell img {
+  max-height: 100%; max-width: 100%; object-fit: contain;
+  filter: grayscale(1) contrast(1.05);
+  opacity: 0.55;
+  transition: opacity .4s, filter .4s;
+}
+.ls-cell:hover img { opacity: 1; filter: grayscale(0) contrast(1); }
+@media (max-width: 860px) {
+  .logo-strip { padding: 40px 20px; }
+  .logo-strip-row { grid-template-columns: repeat(2, 1fr); gap: 24px 0; }
+  .ls-cell { height: 96px; padding: 12px 16px; }
+  .ls-cell:nth-child(2n+1)::before { display: none; }
+}
+
+/* ── PLACEHOLDER VISUAL ───────────────────────────── */
+.placeholder {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  background-color: var(--bg-alt);
+  color: var(--ink-soft);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  overflow: hidden;
+}
+.ph-id {
+  position: absolute; top: 16px; left: 18px;
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--ink-soft);
+  z-index: 2;
+}
+
+/* Client logo "watermark" — large, centered, subtle */
+.ph-logo {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0.18;
+  color: var(--ink);
+  pointer-events: none;
+  transition: opacity 0.5s cubic-bezier(0.2,0.7,0.2,1);
+}
+.card:hover .ph-logo { opacity: 0.28; }
+
+.placeholder--logo {
+  display: flex; align-items: center; justify-content: center;
+  background-color: var(--bg-alt);
+  background-image: repeating-linear-gradient(135deg,
+    rgba(22,22,22,0.035) 0, rgba(22,22,22,0.035) 1px,
+    transparent 1px, transparent 14px);
+}
+.ph-logo-img {
+  max-width: 52%;
+  max-height: 42%;
+  object-fit: contain;
+  filter: grayscale(1) contrast(1.05);
+  opacity: 0.78;
+  transition: opacity 0.5s cubic-bezier(0.2,0.7,0.2,1), transform 0.7s cubic-bezier(0.2,0.7,0.2,1);
+}
+.card:hover .ph-logo-img { opacity: 0.92; transform: scale(1.02); }
+
+.ph-logo svg { width: 64%; height: auto; max-height: 60%; display: block; }
+.ph-logo .wm-text {
+  font-family: var(--sans);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+.ph-logo .wm-text--serif {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  text-transform: none;
+}
+.ph-logo .wm-text--stencil {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.ph-logo .wm-text--mono {
+  font-family: var(--mono);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.ph-logo .wm-sub {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+</style>
+</head>
+<body data-type="sans" data-hover="reveal" style="font-family: Arial">
+
+<nav class="nav">
+  <a href="#" class="nav-brand">Elvir Ali © 2026</a>
+  <div class="nav-links">
+    <a href="#work" class="nav-link active">Work</a>
+    <a href="#contact" class="nav-link">Contact</a>
+  </div>
+</nav>
+
+<header class="hero" data-screen-label="01 Hero">
+  <div class="hero-inner">
+    <h1 class="hero-title">Elvir Ali,<br/><em>Creative Producer</em>.</h1>
+  </div>
+</header>
+
+<section id="work" data-screen-label="02 Work">
+  <div class="section-head">
+    <div>Selected Work <span class="index">— 2022 / 2026</span></div>
+    <div>16 / 16</div>
+  </div>
+
+  <div class="work">
+    <div class="grid" id="projectGrid" data-layout="two">
+      <!-- cards injected by React -->
     </div>
+  </div>
+</section>
 
-    <!-- Navigation -->
-    <nav class="top-nav">
-      <ul>
-        <li><a href="index.html" class="active">WORK</a></li>
-        <li><a href="about.html">ABOUT</a></li>
-      </ul>
-    </nav>
-
-   <!-- Hero / Intro Section -->
-    <header class="hero">
-      <div class="video-container">
-        <video autoplay muted loop playsinline class="back-video">
-          <!-- Make sure your video file is correct! -->
-          <!-- <source src="assets/header-video.mp4" type="video/mp4" /> -->
-        </video>
-        <div class="overlay"></div>
-      </div>
-
-      <!-- NEW: The Moving Red Gradient -->
-      <div class="hero-aurora"></div>
-
-      <div class="hero-text">
-        I’m ELVIR ALI. <br />A Brooklyn-based
-        <span class="underline">Creative Producer.</span>
-      </div>
-    </header>
-
-    <!-- Second Scrolling Marquee -->
-    <div class="marquee-wrapper-second">
-      <div class="marquee">
-        <span
-          >CREATIVE PRODUCER &nbsp;&nbsp;&nbsp; ELVIR ALI &nbsp;&nbsp;&nbsp;
-          CREATIVE PRODUCER &nbsp;&nbsp;&nbsp; ELVIR ALI &nbsp;&nbsp;&nbsp; CREATIVE
-          PRODUCER &nbsp;&nbsp;&nbsp; ELVIR ALI &nbsp;&nbsp;&nbsp; CREATIVE PRODUCER
-          &nbsp;&nbsp;&nbsp; ELVIR ALI &nbsp;&nbsp;&nbsp;</span
-        >
-        <span
-          >CREATIVE PRODUCER &nbsp;&nbsp;&nbsp; ELVIR ALI &nbsp;&nbsp;&nbsp;
-          CREATIVE PRODUCER &nbsp;&nbsp;&nbsp; ELVIR ALI &nbsp;&nbsp;&nbsp; CREATIVE
-          PRODUCER &nbsp;&nbsp;&nbsp; ELVIR ALI &nbsp;&nbsp;&nbsp; CREATIVE PRODUCER
-          &nbsp;&nbsp;&nbsp; ELVIR ALI &nbsp;&nbsp;&nbsp;</span
-        >
-      </div>
+<section class="logo-strip" data-screen-label="03 Clients">
+  <div class="logo-strip-inner">
+    <div class="logo-strip-head">
+      <span>— Select Clients</span>
+      <span>12 of many</span>
     </div>
+    <div class="logo-strip-row">
+      <div class="ls-cell"><img src="https://res.cloudinary.com/dozkrpikv/image/upload/v1780332138/mdl-beast_enrmkl.png" alt="MDL Beast" /></div>
+      <div class="ls-cell"><img src="https://res.cloudinary.com/dozkrpikv/image/upload/v1780332137/fanatics_xqr4jk.png" alt="Fanatics" /></div>
+      <div class="ls-cell"><img src="https://res.cloudinary.com/dozkrpikv/image/upload/v1780332138/activision_wkxpca.png" alt="Activision" /></div>
+      <div class="ls-cell"><img src="https://res.cloudinary.com/dozkrpikv/image/upload/v1780332137/ubisoft_l3f78e.png" alt="Ubisoft" /></div>
+      <div class="ls-cell"><img src="https://res.cloudinary.com/dozkrpikv/image/upload/v1780332137/cod-endowment-cod-white_iwk3ag.png" alt="CoD Endowment" /></div>
+      <div class="ls-cell"><img src="https://res.cloudinary.com/dozkrpikv/image/upload/v1780332137/spotify-icon_fn654o.png" alt="Spotify" /></div>
+      <div class="ls-cell"><img src="https://res.cloudinary.com/dozkrpikv/image/upload/v1780332137/blizzard_xgspct.png" alt="Blizzard" /></div>
+      <div class="ls-cell"><img src="assets/logos/ea.svg" alt="EA" /></div>
+      <div class="ls-cell"><img src="assets/logos/nba.png" alt="NBA" /></div>
+      <div class="ls-cell"><img src="assets/logos/ultra.png" alt="Ultra Music Festival" /></div>
+      <div class="ls-cell"><img src="assets/logos/konami.png" alt="Konami" /></div>
+      <div class="ls-cell"><img src="assets/logos/mls.svg" alt="MLS" /></div>
+    </div>
+  </div>
+</section>
 
-    <!-- The Image Grid (5 Items) -->
-    <section id="work" class="work-grid">
-      
-      <!-- 1. Balad Beast 2026 (Wide) -->
-      <div class="grid-item wide">
-        <a href="/projects/balad_beast_2026.html" class="project-link">
-          <!-- Update src with your Cloudinary link -->
-          <img src="https://res.cloudinary.com/dozkrpikv/image/upload/v1770955692/MDLBEAST2026_thursday_JR-personal_edits-JRZ_4309_dstclb.jpg" alt="Balad Beast" />
-          <div class="project-overlay">
-            <h3>BALAD BEAST 2026</h3>
-            <span>MDL Beast</span>
+<section id="contact" class="contact" data-screen-label="04 Contact">
+  <div class="contact-inner">
+    <div class="contact-lead">
+      <span class="contact-label" style="height: 10px">— Get in touch —</span>
+    </div>
+    <div class="contact-list">
+      <a class="contact-row" href="/cdn-cgi/l/email-protection#a2c7ced4cbd0c3cecbccdbc1e2c5cfc3cbce8cc1cdcf">
+        <span class="cr-k">Email</span>
+        <span class="cr-v"><span class="__cf_email__" data-cfemail="82e7eef4ebf0e3eeebecfbe1c2e5efe3ebeeace1edef">[email&#160;protected]</span></span>
+      </a>
+      <a class="contact-row" href="tel:19173460814">
+        <span class="cr-k">Phone</span>
+        <span class="cr-v">917 346 0814</span>
+      </a>
+      <a class="contact-row" href="#" aria-label="Instagram">
+        <span class="cr-k">Instagram</span>
+        <span class="cr-v">@elvirali</span>
+      </a>
+      <a class="contact-row" href="#" aria-label="LinkedIn">
+        <span class="cr-k">LinkedIn</span>
+        <span class="cr-v">Elvir Ali</span>
+      </a>
+    </div>
+    <div class="contact-foot">
+      <div>© 2026 Elvir Ali</div>
+      <div>Creative Producer — NYC</div>
+    </div>
+  </div>
+</section>
+
+<div id="tweaks-root"></div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/babel" data-presets="env,react">
+const { useState, useEffect, useMemo } = React;
+
+const PROJECTS = [
+  {
+    id: "balad_beast_2026",
+    title: "Balad Beast",
+    client: "MDL Beast",
+    year: "2026",
+    tag: "Festival",
+    role: "Creative Producer",
+    image: "https://res.cloudinary.com/dozkrpikv/image/upload/q_auto,f_auto,w_1400/v1770955694/MDLBEAST2026_friday_ST_TYGA_0294_ocmcgb.jpg",
+    clientLogo: "https://res.cloudinary.com/dozkrpikv/image/upload/v1780332138/mdl-beast_enrmkl.png",
+    logoWhite: true
+  },
+  {
+    id: "ultra_miami_2026",
+    title: "Ultra Miami",
+    client: "Ultra Music Festival",
+    year: "2026",
+    tag: "Festival",
+    role: "Creative Producer",
+    image: "https://res.cloudinary.com/dozkrpikv/image/upload/v1770955132/martin_deedis.jpg",
+    clientLogo: "https://res.cloudinary.com/dozkrpikv/image/upload/v1780332137/ultra_dm87bw.png",
+    logoWhite: true,
+    logoScale: 0.84
+  },
+  {
+    id: "rap_caviar_2026",
+    title: "Spotify Rap Caviar",
+    client: "Spotify",
+    year: "2026",
+    tag: "Event",
+    role: "Creative Producer",
+    image: "https://res.cloudinary.com/dozkrpikv/image/upload/v1780332150/rc-sign_yuhqyv.jpg",
+    clientLogo: "https://res.cloudinary.com/dozkrpikv/image/upload/v1780332137/spotify-icon_fn654o.png",
+    logoScale: 0.98
+  },
+  {
+    id: "mission_ahead_2026",
+    title: "The Mission Ahead",
+    client: "Activision",
+    year: "2025",
+    tag: "Developer Briefing",
+    role: "Creative Producer",
+    image: "https://res.cloudinary.com/dozkrpikv/image/upload/v1780332136/mission-ahead_ptd04s.jpg",
+    clientLogo: "https://res.cloudinary.com/dozkrpikv/image/upload/v1780332138/activision_wkxpca.png",
+    logoWhite: true,
+    logoScale: 2.21
+  },
+  {
+    id: "codpod_s2_2025",
+    title: "CODPOD S2",
+    client: "Activision — Call of Duty",
+    year: "2025 / 2025",
+    tag: "Podcast / Show",
+    role: "Creative Producer",
+    image: "https://res.cloudinary.com/dozkrpikv/image/upload/v1780332135/codpod-s2_pztglt.jpg",
+    imgFit: "contain",
+    clientLogo: "https://res.cloudinary.com/dozkrpikv/image/upload/v1780332138/activision_wkxpca.png",
+    logoWhite: true,
+    logoScale: 2.21
+  },
+  {
+    id: "cards_on_the_table",
+    title: "Cards on the Table",
+    subtitle: "with Kevin Smith",
+    client: "Fanatics × Topps",
+    year: "2025",
+    tag: "Branded Series / Studio",
+    role: "Creative Producer",
+    image: "https://res.cloudinary.com/dozkrpikv/image/upload/v1780332143/fanatics-cover_gpzobu.png",
+    clientLogo: "https://res.cloudinary.com/dozkrpikv/image/upload/v1780332137/fanatics_xqr4jk.png"
+  },
+  {
+    id: "cod_endowment",
+    title: "United Force Tracker Pack",
+    client: "CoD Endowment",
+    year: "2025",
+    tag: "Trailer",
+    role: "Creative Producer",
+    image: "https://res.cloudinary.com/dozkrpikv/image/upload/q_auto,f_auto,w_1400/v1771282261/20_i1le0m.jpg",
+    clientLogo: "assets/logos/cod-endowment-cod-white.png",
+    logoScale: 0.85
+  },
+  {
+    id: "r6_nal_2025",
+    title: "R6 North American League",
+    client: "Ubisoft",
+    year: "2025",
+    tag: "Esports League",
+    role: "Creative Lead Producer",
+    image: "https://res.cloudinary.com/dozkrpikv/image/upload/q_auto,f_auto,w_1400/v1771289495/IMG_7470_thgecl.jpg",
+    clientLogo: "https://res.cloudinary.com/dozkrpikv/image/upload/v1780332137/ubisoft_l3f78e.png",
+    logoWhite: true,
+    logoScale: 1.30
+  },
+  {
+    id: "codpod_s1_2025",
+    title: "CODPOD S1",
+    client: "Activision — Call of Duty",
+    year: "2024 / 2025",
+    tag: "Podcast / Show",
+    role: "Creative Producer",
+    image: "https://res.cloudinary.com/dozkrpikv/image/upload/v1780332136/codpod_r53wsb.jpg",
+    imgFit: "contain",
+    clientLogo: "https://res.cloudinary.com/dozkrpikv/image/upload/v1780332138/activision_wkxpca.png",
+    logoWhite: true,
+    logoScale: 2.21
+  },
+  {
+    id: "battlefield_6_launch",
+    title: "Battlefield 6 - Launch Party",
+    client: "EA",
+    year: "2025",
+    tag: "Event",
+    role: "Content Lead",
+    image: "https://res.cloudinary.com/dozkrpikv/image/upload/v1780332150/truck_tcamvc.jpg",
+    clientLogo: "https://res.cloudinary.com/dozkrpikv/image/upload/v1780332138/ea_b280r4.svg",
+    logoWhite: true,
+    logoScale: 1.3
+  },
+  {
+    id: "wow_anniversary_2024",
+    title: "World of Warcraft - World Anniversary",
+    client: "Blizzard",
+    year: "2025",
+    tag: "Event",
+    role: "Lead Content Producer",
+    image: "https://res.cloudinary.com/dozkrpikv/image/upload/v1770955669/DSC05497_gkw99p.jpg",
+    clientLogo: "https://res.cloudinary.com/dozkrpikv/image/upload/v1780332137/blizzard_xgspct.png",
+    logoWhite: true,
+    logoScale: 1.1
+  },
+  {
+    id: "cod_endeavour_2024",
+    title: "Endeavour Tracer Pack",
+    client: "CoD Endowment",
+    year: "2024",
+    tag: "Trailer",
+    role: "Creative Lead",
+    image: "https://res.cloudinary.com/dozkrpikv/image/upload/v1780332136/endeavour-thumb_xxmz4d.jpg",
+    clientLogo: "https://res.cloudinary.com/dozkrpikv/image/upload/v1780332137/cod-endowment-cod-white_iwk3ag.png",
+    logoScale: 0.85
+  },
+  {
+    id: "world_series_of_warzone_launch",
+    title: "World Series of Warzone",
+    client: "Call of Duty — Activision",
+    year: "2024",
+    tag: "Trailer",
+    role: "Director",
+    image: "https://res.cloudinary.com/dozkrpikv/image/upload/q_auto,f_auto,w_1400/v1771282029/Screenshot_2026-02-16_at_5.42.51_PM_tgou4i.png",
+    clientLogo: "assets/logos/activision.png",
+    logoWhite: true,
+    logoScale: 2.21
+  },
+  {
+    id: "yugioh_seattle_2024",
+    title: "Yu-Gi-Oh! - World Championship",
+    client: "Konami",
+    year: "2024",
+    tag: "Event",
+    role: "Creative Director",
+    image: "https://res.cloudinary.com/dozkrpikv/image/upload/v1780332141/yugioh-group_qstzsq.png",
+    clientLogo: "https://res.cloudinary.com/dozkrpikv/image/upload/v1780332138/konami_tsobtp.png",
+    logoScale: 1.1
+  },
+  {
+    id: "emls_2023",
+    title: "eMLS",
+    client: "MLS",
+    year: "2023 / 2024",
+    tag: "Esports League",
+    role: "Creative Lead",
+    image: "https://res.cloudinary.com/dozkrpikv/image/upload/v1780332133/celebrate_aoug0e.webp",
+    clientLogo: "https://res.cloudinary.com/dozkrpikv/image/upload/v1780332136/mls_jfok2f.svg",
+    logoScale: 1.1
+  },
+  {
+    id: "nba_2kl_2022_23",
+    title: "NBA2K League",
+    client: "NBA",
+    year: "2022 / 2023",
+    tag: "Esports League",
+    role: "Creative Content Lead",
+    image: "https://res.cloudinary.com/dozkrpikv/image/upload/v1780332141/draft-stage_xgk6mq.jpg",
+    clientLogo: "https://res.cloudinary.com/dozkrpikv/image/upload/v1780332138/nba_qpvdfm.png",
+    logoScale: 1.19
+  },
+];
+
+function ClientLogo({ logo }) {
+  if (!logo) return null;
+  const cls = logo.kind === "serif"   ? "wm-text wm-text--serif"
+            : logo.kind === "stencil" ? "wm-text wm-text--stencil"
+            : logo.kind === "mono"    ? "wm-text wm-text--mono"
+            : logo.kind === "split"   ? "wm-text wm-text--stencil"
+            :                           "wm-text";
+  return (
+    <div className="ph-logo" aria-hidden="true">
+      <svg viewBox="0 0 600 240" preserveAspectRatio="xMidYMid meet">
+        <text x="300" y="130" textAnchor="middle"
+              className={cls}
+              style={{ fontSize: 88 }}>
+          {logo.main}
+        </text>
+        {logo.sub ? (
+          <text x="300" y="180" textAnchor="middle"
+                className="wm-sub"
+                style={{ fontSize: 16 }}>
+            {logo.sub}
+          </text>
+        ) : null}
+      </svg>
+    </div>
+  );
+}
+
+function ProjectCard({ p, index, hover }) {
+  const num = String(index + 1).padStart(2, "0");
+  return (
+    <a className="card" data-hover={hover} data-i={index} href={`projects/${p.id}.html`}>
+      <div className="card-media">
+        {p.image ? (
+          <img
+            className="card-img"
+            src={p.image}
+            alt={p.title}
+            loading="lazy"
+            style={p.imgFit === "contain" ? { objectFit: "contain", backgroundColor: "#0f0f10" } : null}
+          />
+        ) : (
+          <div className="placeholder">
+            <span className="ph-id">{num} — {p.tag}</span>
+            <ClientLogo logo={p.logo} />
           </div>
-        </a>
-      </div>
-
-           <!-- 2. Fanatics x Topps 2026 (Wide) -->
-      <div class="grid-item">
-        <a href="/projects/cards_on_the_table.html" class="project-link">
-          <!-- Update src with your Cloudinary link -->
-          <img src="https://res.cloudinary.com/dozkrpikv/image/upload/v1771026350/FANATICS_EP1_-_Chrome.00_08_37_08.Still003_jlxm1g.png" alt="Fanatics x Topps" />
-          <div class="project-overlay">
-            <h3>CARDS ON THE TABLE: KEVIN SMITH 2025</h3>
-            <span>Fanatics x Topps</span>
+        )}
+        {p.clientLogo ? (
+          <div className={`card-client-logo${p.logoWhite ? " is-white" : ""}`} aria-hidden="true">
+            <img src={p.clientLogo} alt="" style={p.logoScale ? { transform: `scale(${p.logoScale})` } : null} />
           </div>
-        </a>
+        ) : null}
+        <div className="card-overlay">
+          <span>View Project</span>
+          <span>↗ {num}</span>
+        </div>
       </div>
-
-      <!-- 3. Call of Duty - WSOW (Regular) -->
-      <div class="grid-item">
-        <a href="/projects/world_series_of_warzone_launch.html" class="project-link">
-          <!-- Update src with your Cloudinary link -->
-          <img src="https://res.cloudinary.com/dozkrpikv/image/upload/v1771282029/Screenshot_2026-02-16_at_5.42.51_PM_tgou4i.png" alt="WSOW" />
-          <div class="project-overlay">
-            <h3>WORLD SERIES OF WARZONE LAUNCH VIDEO 2024</h3>
-            <span>Call of Duty</span>
-          </div>
-        </a>
+      <div className="card-caption">
+        <div className="card-caption-left">
+          <h3 className="card-title">
+            {p.title}<em>, {p.tag}</em>
+          </h3>
+          {p.role ? <span className="card-role">{p.role}</span> : null}
+        </div>
+        <span className="card-meta">{p.client} — {p.year}</span>
       </div>
+    </a>
+  );
+}
 
-            <!-- 4. Call of Duty - Endowment Pack (Tall/Regular) -->
-      <div class="grid-item wide">
-        <a href="/projects/cod_endowment.html" class="project-link">
-          <!-- Update src with your Cloudinary link -->
-          <img src="https://res.cloudinary.com/dozkrpikv/image/upload/v1771279328/CODMR_S074_S001_T004_aqdeja.jpg" alt="CoD Endowment" />
-          <div class="project-overlay">
-            <h3>UNITED FORCE: TRACER PACK 2025</h3>
-            <span>Call of Duty Endowment</span>
-          </div>
-        </a>
-      </div>
+function App() {
+  useEffect(() => {
+    document.body.style.backgroundImage =
+      "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.06 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")";
+  }, []);
 
-      <!-- 5. R6 North American League 2025 -->
-      <div class="grid-item wide">
-        <a href="/projects/r6_nal_2025.html" class="project-link">
-          <img src="https://res.cloudinary.com/dozkrpikv/image/upload/v1771289113/s-blob-v1-IMAGE-11bjgNfGoRk_xeqhqn.gif" alt="R6 North American League 2025" />
-          <div class="project-overlay">
-            <h3>R6 NORTH AMERICAN LEAGUE 2025</h3>
-            <span>Ubisoft</span>
-          </div>
-        </a>
-      </div>
+  return (
+    <>
+      {PROJECTS.map((p, i) => (
+        <CardPortal key={p.id} p={p} index={i} hover="reveal" />
+      ))}
+    </>
+  );
+}
 
-      <!-- 6. CODPOD S1 2025 -->
-      <div class="grid-item">
-        <a href="/projects/codpod_s1_2025.html" class="project-link">
-          <img src="https://res.cloudinary.com/dozkrpikv/image/upload/v1771299879/CODPOD_GIF_2_mmwjvl.gif" alt="CODPOD S1 2025" />
-          <div class="project-overlay">
-            <h3>CODPOD S1 2025</h3>
-            <span>Call of Duty - Activision</span>
-          </div>
-        </a>
-      </div>
+// Renders each card into the existing #projectGrid element so the grid CSS keeps its ordering rules.
+function CardPortal({ p, index, hover }) {
+  const grid = document.getElementById("projectGrid");
+  const [node] = useState(() => {
+    const el = document.createElement("div");
+    el.style.display = "contents";
+    return el;
+  });
+  useEffect(() => {
+    if (!grid) return;
+    grid.appendChild(node);
+    return () => { try { grid.removeChild(node); } catch (e) {} };
+  }, [grid, node]);
+  return ReactDOM.createPortal(<ProjectCard p={p} index={index} hover={hover} />, node);
+}
 
+const root = ReactDOM.createRoot(document.getElementById("tweaks-root"));
+root.render(<App />);
+</script>
 
-    </section>
-
-    <footer>
-      <p>&copy; 2026 ELVIR ALI. All Rights Reserved.</p>
-    </footer>
-
-  </body>
+</body>
 </html>

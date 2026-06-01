@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Endeavour Tracer Pack — Elvir Ali</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --bg: #f4f1ec; --bg-alt: #ece8e0; --ink: #161616; --ink-soft: #5a5a5a;
+  --rule: rgba(22,22,22,0.14);
+  --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --serif: "Instrument Serif", "Times New Roman", serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.5; -webkit-font-smoothing: antialiased; letter-spacing: -0.005em; }
+a { color: inherit; text-decoration: none; }
+img, video { display: block; max-width: 100%; }
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 18px 32px;
+  background: color-mix(in oklab, var(--bg) 88%, transparent);
+  backdrop-filter: saturate(160%) blur(8px);
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+}
+.back { display: inline-flex; align-items: center; gap: 8px; opacity: 0.7; transition: opacity .2s; }
+.back:hover { opacity: 1; }
+.back::before { content: "←"; }
+.nav-links { display: flex; gap: 28px; }
+.nav-links a { opacity: 0.7; transition: opacity .2s; }
+.nav-links a:hover { opacity: 1; }
+.head { padding: 88px 32px 40px; max-width: 1440px; margin: 0 auto; }
+.crumb {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink-soft); margin-bottom: 28px;
+  display: flex; align-items: center; gap: 14px;
+}
+.crumb b { color: var(--ink); font-weight: 500; }
+.title {
+  font-family: var(--sans); font-weight: 400;
+  font-size: clamp(48px, 8vw, 128px); line-height: 0.96;
+  letter-spacing: -0.035em; margin: 0; max-width: 16ch;
+}
+.title em { font-family: var(--serif); font-style: italic; font-weight: 400; }
+.eyebrow {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--ink-soft); margin-bottom: 24px;
+}
+.meta-row {
+  display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px;
+  margin-top: 56px; padding-top: 28px; border-top: 1px solid var(--rule);
+}
+.meta-cell { grid-column: span 3; }
+.meta-cell .k { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 6px; }
+.meta-cell .v { font-size: 16px; letter-spacing: -0.005em; }
+.hero-img { max-width: 1440px; margin: 16px auto 0; padding: 0 32px; }
+.hero-img figure { margin: 0; aspect-ratio: 16/9; background: var(--bg-alt); overflow: hidden; position: relative; }
+.hero-img img { width: 100%; height: 100%; object-fit: cover; }
+.hero-video {
+  position: relative; display: block;
+  aspect-ratio: 16/9; overflow: hidden; background: #000;
+  border: 1px solid rgba(22,22,22,0.06);
+}
+.hero-video img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s cubic-bezier(0.2,0.7,0.2,1); }
+.hero-video::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,0.6) 100%); pointer-events: none; }
+.hero-video .play { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 88px; height: 88px; border-radius: 999px; background: rgba(255,255,255,0.95); display: flex; align-items: center; justify-content: center; z-index: 2; transition: transform 0.4s cubic-bezier(0.2,0.7,0.2,1), background 0.3s; }
+.hero-video .play::before { content: ""; width: 0; height: 0; border-left: 20px solid #161616; border-top: 13px solid transparent; border-bottom: 13px solid transparent; margin-left: 6px; }
+.hero-video .cap { position: absolute; left: 18px; bottom: 18px; z-index: 2; font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #fff; }
+.hero-video:hover img { transform: scale(1.03); }
+.hero-video:hover .play { transform: translate(-50%, -50%) scale(1.08); background: #fff; }
+.body { max-width: 1440px; margin: 80px auto 64px; padding: 0 32px; display: grid; grid-template-columns: repeat(12, 1fr); gap: 32px; }
+.lede { grid-column: 2 / span 10; font-family: var(--sans); font-size: clamp(22px, 2.3vw, 32px); line-height: 1.3; letter-spacing: -0.015em; margin: 0; }
+.lede em { font-family: var(--serif); font-style: italic; }
+.credits { grid-column: 10 / span 3; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); }
+.credits .c-row { padding: 10px 0; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; gap: 12px; }
+.credits .c-row b { color: var(--ink); font-weight: 500; text-align: right; }
+.role-block { max-width: 1440px; margin: 0 auto 96px; padding: 0 32px; display: grid; grid-template-columns: repeat(12, 1fr); gap: 32px; }
+.role-block .col { grid-column: span 6; display: grid; grid-template-columns: 120px 1fr; gap: 24px; padding-top: 28px; border-top: 1px solid var(--rule); }
+.role-block .lbl { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); }
+.role-block .txt { font-size: 16px; line-height: 1.55; max-width: 52ch; }
+.video-grid { max-width: 1440px; margin: 0 auto 96px; padding: 0 32px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.video-thumb { position: relative; display: block; aspect-ratio: 16/9; background: #000; overflow: hidden; border: 1px solid rgba(22,22,22,0.06); }
+.video-thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.2,0.7,0.2,1); }
+.video-thumb::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.55) 100%); pointer-events: none; }
+.video-thumb .play { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 56px; height: 56px; border-radius: 999px; background: rgba(255,255,255,0.95); display: flex; align-items: center; justify-content: center; z-index: 2; transition: transform 0.4s cubic-bezier(0.2,0.7,0.2,1), background 0.3s; }
+.video-thumb .play::before { content: ""; width: 0; height: 0; border-left: 12px solid #161616; border-top: 8px solid transparent; border-bottom: 8px solid transparent; margin-left: 3px; }
+.video-thumb .cap { position: absolute; left: 12px; bottom: 12px; z-index: 2; font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #fff; }
+.video-thumb:hover img { transform: scale(1.04); }
+.video-thumb:hover .play { transform: translate(-50%, -50%) scale(1.08); background: #fff; }
+.next { border-top: 1px solid var(--rule); padding: 64px 32px; max-width: 1440px; margin: 0 auto; display: flex; justify-content: space-between; align-items: end; gap: 24px; }
+.next .label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); }
+.next a.next-link { font-family: var(--sans); font-size: clamp(32px, 4vw, 64px); line-height: 1; letter-spacing: -0.03em; display: inline-flex; align-items: baseline; gap: 16px; }
+.next a.next-link em { font-family: var(--serif); font-style: italic; }
+.next a.next-link::after { content: "↗"; font-size: 0.5em; }
+footer { border-top: 1px solid var(--rule); padding: 24px 32px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); display: flex; justify-content: space-between; }
+@media (max-width: 860px) {
+  .nav { padding: 14px 20px; }
+  .head, .body, .role-block, .next, .video-grid { padding-left: 20px; padding-right: 20px; }
+  .hero-img { padding: 0 20px; }
+  .meta-row { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .meta-cell { grid-column: span 1; }
+  .body { grid-template-columns: 1fr; }
+  .lede, .credits { grid-column: 1; }
+  .role-block .col { grid-template-columns: 1fr; gap: 8px; grid-column: 1 / -1; }
+  .video-grid { grid-template-columns: 1fr; }
+  .next { flex-direction: column; align-items: flex-start; gap: 16px; }
+  footer { padding: 20px; flex-direction: column; gap: 8px; }
+}
+.stats {
+  max-width: 1440px; margin: 56px auto 0; padding: 32px 32px;
+  border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+.stat .v {
+  font-family: var(--sans); font-weight: 400;
+  font-size: clamp(40px, 5vw, 72px); line-height: 1; letter-spacing: -0.03em;
+}
+.stat .l {
+  margin-top: 8px;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink-soft);
+}
+@media (max-width: 860px) { .stats { grid-template-columns: 1fr; gap: 28px; padding-left: 20px; padding-right: 20px; } }
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="../index.html" class="back">Back to work</a>
+  <div class="nav-links">
+    <a href="../index.html#work">Work</a>
+    <a href="../index.html#contact">Contact</a>
+  </div>
+</nav>
+<header class="head">
+  <div class="crumb"><span>Project 12 / 16</span><span>·</span><b>Trailer</b></div>
+  <div class="eyebrow">2024 — Branded Content — Call of Duty Endowment</div>
+  <h1 class="title">Endeavour <em>Tracer Pack.</em></h1>
+  <div class="meta-row">
+    <div class="meta-cell"><div class="k">Client</div><div class="v">Call of Duty Endowment</div></div>
+    <div class="meta-cell"><div class="k">Year</div><div class="v">2024</div></div>
+    <div class="meta-cell"><div class="k">Role</div><div class="v">Creative Lead</div></div>
+    <div class="meta-cell"><div class="k">Location</div><div class="v">On-site / In-game</div></div>
+  </div>
+</header>
+<section class="hero-img">
+  <a class="hero-video" href="https://www.youtube.com/watch?v=mSo0dRx7-gI" target="_blank" rel="noopener" aria-label="Watch the C.O.D.E. Endeavour: Tracer Pack trailer on YouTube">
+    <img src="../assets/covers/endeavour-hero.avif" alt="Watch the C.O.D.E. Endeavour: Tracer Pack trailer on YouTube" />
+    <span class="play" aria-hidden="true"></span>
+    <span class="cap">— Watch the C.O.D.E. Endeavour: Tracer Pack trailer on YouTube</span>
+  </a>
+</section>
+<section class="stats">
+  <div class="stat"><div class="v">100%</div><div class="l">Net proceeds to C.O.D.E.</div></div>
+  <div class="stat"><div class="v">150K+</div><div class="l">Veterans placed in careers</div></div>
+  <div class="stat"><div class="v">UK-1st</div><div class="l">C.O.D.E. operator skin · ThruDark</div></div>
+</section>
+<section class="body">
+  <p class="lede">Drop a new C.O.D.E. Endeavour: Tracer Pack for the entire Call of Duty fanbase to purchase and be a part of - with proceeds supporting the Call of Duty Endowment's mission to help veterans find quality careers.</p>
+</section>
+<section class="next">
+  <div class="label">— Next project</div>
+  <a href="world_series_of_warzone_launch.html" class="next-link">World Series of <em>Warzone</em></a>
+</section>
+<footer>
+  <div>© 2026 Elvir Ali. All rights reserved.</div>
+  <div><a href="mailto:elviralinyc@gmail.com">elviralinyc@gmail.com</a></div>
+</footer>
+</body>
+</html>

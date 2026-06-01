@@ -1,151 +1,301 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CODPOD Season 1 2025 | Elvir Ali</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CODPOD S01.  — Elvir Ali</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --bg: #f4f1ec; --bg-alt: #ece8e0; --ink: #161616; --ink-soft: #5a5a5a;
+  --rule: rgba(22,22,22,0.14);
+  --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --serif: "Instrument Serif", "Times New Roman", serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.5; -webkit-font-smoothing: antialiased; letter-spacing: -0.005em; }
+a { color: inherit; text-decoration: none; }
+img, video { display: block; max-width: 100%; }
 
-  <!-- Primary Meta Tags -->
-  <meta name="title" content="CODPOD Season 1 2025 | Elvir Ali">
-  <meta name="description" content="Creative production for CODPOD Season 1 - transforming Call of Duty's podcast into a high-concept studio show with 510K YouTube views and 55K hours listened, produced by Elvir Ali for Activision.">
-  <meta name="keywords" content="creative producer, Brooklyn, Call of Duty, Ubisoft, content production, video production">
-  <meta name="author" content="Elvir Ali">
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 18px 32px;
+  background: color-mix(in oklab, var(--bg) 88%, transparent);
+  backdrop-filter: saturate(160%) blur(8px);
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+}
+.back { display: inline-flex; align-items: center; gap: 8px; opacity: 0.7; transition: opacity .2s; }
+.back:hover { opacity: 1; }
+.back::before { content: "←"; }
+.nav-links { display: flex; gap: 28px; }
+.nav-links a { opacity: 0.7; transition: opacity .2s; }
+.nav-links a:hover { opacity: 1; }
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="article">
-  <meta property="og:url" content="https://elvirali.com/projects/codpod_s1_2025.html">
-  <meta property="og:title" content="CODPOD Season 1 2025 | Elvir Ali">
-  <meta property="og:description" content="Creative production for CODPOD Season 1 - transforming Call of Duty's podcast into a high-concept studio show with 510K YouTube views and 55K hours listened, produced by Elvir Ali for Activision.">
-  <meta property="og:image" content="https://res.cloudinary.com/dozkrpikv/image/upload/v1771289830/OS_x_ATVI_COD_POD_Season_2_gpsp1i.jpg">
+.head { padding: 88px 32px 40px; max-width: 1440px; margin: 0 auto; }
+.crumb {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink-soft); margin-bottom: 28px;
+  display: flex; align-items: center; gap: 14px;
+}
+.crumb b { color: var(--ink); font-weight: 500; }
+.title {
+  font-family: var(--sans); font-weight: 400;
+  font-size: clamp(48px, 8vw, 128px); line-height: 0.96;
+  letter-spacing: -0.035em; margin: 0; max-width: 16ch;
+}
+.title em { font-family: var(--serif); font-style: italic; font-weight: 400; }
+.eyebrow {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--ink-soft); margin-bottom: 24px;
+}
+.meta-row {
+  display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px;
+  margin-top: 56px; padding-top: 28px; border-top: 1px solid var(--rule);
+}
+.meta-cell { grid-column: span 3; }
+.meta-cell .k { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 6px; }
+.meta-cell .v { font-size: 16px; letter-spacing: -0.005em; }
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://elvirali.com/projects/codpod_s1_2025.html">
-  <meta name="twitter:title" content="CODPOD Season 1 2025 | Elvir Ali">
-  <meta name="twitter:description" content="Creative production for CODPOD Season 1 - transforming Call of Duty's podcast into a high-concept studio show with 510K YouTube views and 55K hours listened, produced by Elvir Ali for Activision.">
-  <meta name="twitter:image" content="https://res.cloudinary.com/dozkrpikv/image/upload/v1771289830/OS_x_ATVI_COD_POD_Season_2_gpsp1i.jpg">
+.hero-img {
+  max-width: 1440px; margin: 16px auto 0; padding: 0 32px;
+}
+.hero-img figure { margin: 0; aspect-ratio: 16/9; background: var(--bg-alt); overflow: hidden; }
+.hero-img img { width: 100%; height: 100%; object-fit: cover; }
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="../style.css" />
-  <link rel="stylesheet" href="project.css" />
+.body {
+  max-width: 1440px; margin: 72px auto 72px; padding: 0 32px;
+  display: grid; grid-template-columns: repeat(12, 1fr); gap: 32px;
+}
+.lede {
+  grid-column: 2 / span 9;
+  font-family: var(--sans); font-size: clamp(22px, 2.3vw, 32px);
+  line-height: 1.3; letter-spacing: -0.015em; margin: 0;
+}
+.lede em { font-family: var(--serif); font-style: italic; }
+.credits {
+  grid-column: 10 / span 3;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--ink-soft);
+}
+.credits .c-row { padding: 10px 0; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; gap: 12px; }
+.credits .c-row b { color: var(--ink); font-weight: 500; text-align: right; }
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+.role-block {
+  max-width: 1440px; margin: 0 auto 80px; padding: 0 32px;
+  display: grid; grid-template-columns: repeat(12, 1fr); gap: 32px;
+}
+.role-block .col {
+  grid-column: span 6;
+  display: grid; grid-template-columns: 120px 1fr; gap: 24px;
+  padding-top: 28px; border-top: 1px solid var(--rule);
+}
+.role-block .lbl {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink-soft);
+}
+.role-block .txt { font-size: 16px; line-height: 1.55; max-width: 52ch; }
+
+.stats {
+  max-width: 1440px; margin: 56px auto 0; padding: 32px 32px;
+  border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+.stat .v {
+  font-family: var(--sans); font-weight: 400;
+  font-size: clamp(40px, 5vw, 72px); line-height: 1; letter-spacing: -0.03em;
+}
+.stat .l {
+  margin-top: 8px;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink-soft);
+}
+
+.gallery { max-width: 1440px; margin: 0 auto 96px; padding: 0 32px; display: grid; grid-template-columns: repeat(6, 1fr); gap: 24px; }
+.gallery figure { margin: 0; background: var(--bg-alt); overflow: hidden; }
+.gallery figure.wide { grid-column: span 6; aspect-ratio: 16/9; }
+.gallery figure.half { grid-column: span 3; aspect-ratio: 4/5; }
+.gallery img { width: 100%; height: 100%; object-fit: cover; }
+
+.video-block {
+  max-width: 1440px; margin: 0 auto 96px; padding: 0 32px;
+}
+.video-block figure { margin: 0; aspect-ratio: 16/9; background: #000; position: relative; }
+.video-block video { width: 100%; height: 100%; object-fit: cover; }
+.video-block iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.video-grid {
+  max-width: 1440px; margin: 0 auto 96px; padding: 0 32px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+.video-thumb {
+  position: relative; display: block;
+  aspect-ratio: 16/9; background: #000;
+  overflow: hidden;
+  border: 1px solid rgba(22,22,22,0.06);
+  transition: transform 0.4s cubic-bezier(0.2,0.7,0.2,1);
+}
+.video-thumb img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.2,0.7,0.2,1), opacity 0.3s;
+}
+.video-thumb::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.55) 100%);
+  pointer-events: none;
+}
+.video-thumb .play {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px; height: 64px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.95);
+  display: flex; align-items: center; justify-content: center;
+  color: #161616;
+  font-size: 22px;
+  z-index: 2;
+  transition: transform 0.4s cubic-bezier(0.2,0.7,0.2,1), background 0.3s;
+}
+.video-thumb .play::before {
+  content: "";
+  width: 0; height: 0;
+  border-left: 14px solid currentColor;
+  border-top: 9px solid transparent;
+  border-bottom: 9px solid transparent;
+  margin-left: 4px;
+}
+.video-thumb .cap {
+  position: absolute; left: 14px; bottom: 14px;
+  z-index: 2;
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: #fff;
+}
+.video-thumb:hover img { transform: scale(1.04); }
+.video-thumb:hover .play { transform: translate(-50%, -50%) scale(1.08); background: #fff; }
+@media (max-width: 860px) {
+  .video-grid { grid-template-columns: 1fr; padding: 0 20px; }
+}
+.video-cap {
+  margin-top: 14px;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink-soft);
+  display: flex; justify-content: space-between;
+}
+
+.next {
+  border-top: 1px solid var(--rule); padding: 64px 32px;
+  max-width: 1440px; margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: end; gap: 24px;
+}
+.next .label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); }
+.next a.next-link {
+  font-family: var(--sans); font-size: clamp(32px, 4vw, 64px); line-height: 1;
+  letter-spacing: -0.03em; display: inline-flex; align-items: baseline; gap: 16px;
+}
+.next a.next-link em { font-family: var(--serif); font-style: italic; }
+.next a.next-link::after { content: "↗"; font-size: 0.5em; }
+
+footer { border-top: 1px solid var(--rule); padding: 24px 32px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); display: flex; justify-content: space-between; }
+
+@media (max-width: 860px) {
+  .nav { padding: 14px 20px; }
+  .head, .body, .role-block, .gallery, .stats, .video-block, .next { padding-left: 20px; padding-right: 20px; }
+  .hero-img { padding: 0 20px; }
+  .meta-row { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .meta-cell { grid-column: span 1; }
+  .body { grid-template-columns: 1fr; }
+  .lede, .credits { grid-column: 1; }
+  .role-block .col { grid-template-columns: 1fr; gap: 8px; grid-column: 1 / -1; }
+  .stats { grid-template-columns: 1fr; gap: 28px; }
+  .gallery { grid-template-columns: 1fr; }
+  .gallery figure.wide, .gallery figure.half { grid-column: span 1; }
+  .next { flex-direction: column; align-items: flex-start; gap: 16px; }
+  footer { padding: 20px; flex-direction: column; gap: 8px; }
+}
+</style>
 </head>
-  <body>
-    <!-- Navigation -->
-    <nav class="top-nav">
-      <ul>
-        <li><a href="../index.html" class="active">WORK</a></li>
-        <li><a href="../about.html">ABOUT</a></li>
-      </ul>
-    </nav>
+<body>
 
-    <!-- PROJECT HERO -->
-    <header class="project-hero">
-      <div class="hero-media">
-        <img
-          src="https://res.cloudinary.com/dozkrpikv/image/upload/v1771299879/CODPOD_GIF_2_mmwjvl.gif"
-          alt="CODPOD S1 Hero"
-        />
-        <div class="dark-overlay"></div>
-      </div>
+<nav class="nav">
+  <a href="../index.html" class="back">Back to work</a>
+  <div class="nav-links">
+    <a href="../index.html#work">Work</a>
+    <a href="../index.html#contact">Contact</a>
+  </div>
+</nav>
 
-      <div class="project-title-box">
-        <span class="project-meta">2024 - 2025 / BRANDED SERIES / GLOBAL</span>
-        <h1>CODPOD S1 2025</h1>
-      </div>
-    </header>
+<header class="head">
+  <div class="crumb"><span>Project 09 / 16</span><span>·</span><b>Branded Series</b></div>
+  <div class="eyebrow">2024 / 2025 — Branded Series — Global</div>
+  <h1 class="title">CODPOD <em>S01.</em></h1>
+  <div class="meta-row">
+    <div class="meta-cell"><div class="k">Client</div><div class="v">Call of Duty — Activision</div></div>
+    <div class="meta-cell"><div class="k">Year</div><div class="v">2024 / 2025</div></div>
+    <div class="meta-cell"><div class="k">Role</div><div class="v">Creative Producer</div></div>
+    <div class="meta-cell"><div class="k">Location</div><div class="v">Los Angeles</div></div>
+  </div>
+</header>
 
-    <!-- MAIN CONTENT -->
-    <main class="project-container">
-      <aside class="project-info sticky-col">
-        <div class="info-wrapper">
-          <h2>The Brief</h2>
-          <p>
-            Transform CODPOD from a traditional podcast into a high-concept,
-            personality-driven show - blending breaking news, developer access,
-            behind-the-scenes storytelling, and community interaction. Season 1
-            established the format across six episodes, integrating cold opens,
-            themed segments, guest interviews, and interactive fan moments to
-            elevate the Call of Duty content ecosystem.
-          </p>
+<section class="hero-img">
+  <figure><img src="../assets/covers/codpod-s1-hero.webp" alt="CODPOD Season 01 — COD POD Episode 5 on set" /></figure>
+</section>
 
-          <h2>The Role</h2>
-          <p>
-            Creative Producer leading format development, episode structure,
-            production execution, and post-production direction across all six
-            episodes. Oversaw show evolution from “podcast” to full studio show
-            - shaping segments, tone, and pacing season-wide.
-          </p>
+<section class="stats">
+  <div class="stat"><div class="v">510,570</div><div class="l">YouTube views</div></div>
+  <div class="stat"><div class="v">55,427</div><div class="l">Hours listened</div></div>
+  <div class="stat"><div class="v">16×</div><div class="l">Ep 1 → Ep 6 daily views</div></div>
+</section>
 
-          <h2>Accomplishments</h2>
-          <p>
-            • 510,570 YouTube views<br />
-            • 12,419 Spotify listens<br />
-            • 55,427 hours listened<br />
-            • Grew from 424 to 6,803 daily views from Episode 1 to Episode 6<br />
-            Positioned CODPOD as the official platform for breaking Call of Duty
-            news while strengthening community engagement across YouTube and
-            social.
-          </p>
+<section class="body">
+  <p class="lede" style="width: 1213px; height: 210px; font-family: Helvetica">Transform CODPOD from a traditional podcast into a high-concept, personality-driven show - blending breaking news, developer access, behind-the-scenes storytelling, and community interaction. Season 1 established the format across six episodes, integrating cold opens, themed segments, guest interviews, and interactive fan moments to elevate the Call of Duty content ecosystem.</p>
+</section>
 
-          <div class="credits-list">
-            <h3>Credits</h3>
-            <ul>
-              <li><strong>Role:</strong> Creative Producer</li>
-              <li><strong>Client:</strong> Call of Duty - Activision</li>
-              <li><strong>Agency:</strong> OS STUDIOS</li>
-            </ul>
-          </div>
-        </div>
-      </aside>
+<section class="video-grid">
+  <a class="video-thumb" href="https://www.youtube.com/watch?v=kizjDUakDo8" target="_blank" rel="noopener">
+    <img src="https://i.ytimg.com/vi/kizjDUakDo8/maxresdefault.jpg" alt="CODPOD Episode 2" loading="lazy" />
+    <span class="play" aria-hidden="true"></span>
+    <span class="cap">— Episode 2</span>
+  </a>
+  <a class="video-thumb" href="https://www.youtube.com/watch?v=r9NglVF5lTM" target="_blank" rel="noopener">
+    <img src="https://i.ytimg.com/vi/r9NglVF5lTM/maxresdefault.jpg" alt="CODPOD Episode 3" loading="lazy" />
+    <span class="play" aria-hidden="true"></span>
+    <span class="cap">— Episode 3</span>
+  </a>
+  <a class="video-thumb" href="https://www.youtube.com/watch?v=2Q2r0XSMkcA" target="_blank" rel="noopener">
+    <img src="https://i.ytimg.com/vi/2Q2r0XSMkcA/maxresdefault.jpg" alt="CODPOD Episode 4" loading="lazy" />
+    <span class="play" aria-hidden="true"></span>
+    <span class="cap">— Episode 4</span>
+  </a>
+  <a class="video-thumb" href="https://www.youtube.com/watch?v=rKCg90ZlZJs" target="_blank" rel="noopener">
+    <img src="https://i.ytimg.com/vi/rKCg90ZlZJs/maxresdefault.jpg" alt="CODPOD Episode 5" loading="lazy" />
+    <span class="play" aria-hidden="true"></span>
+    <span class="cap">— Episode 5</span>
+  </a>
+  <a class="video-thumb" href="https://www.youtube.com/watch?v=F7NvcBZJzbQ" target="_blank" rel="noopener">
+    <img src="https://i.ytimg.com/vi/F7NvcBZJzbQ/maxresdefault.jpg" alt="CODPOD Episode 6" loading="lazy" />
+    <span class="play" aria-hidden="true"></span>
+    <span class="cap">— Episode 6</span>
+  </a>
+</section>
 
-      <section class="project-gallery">
-        <div class="gallery-item video-item">
-          <video autoplay muted loop playsinline>
-            <source
-              src="https://res.cloudinary.com/dozkrpikv/video/upload/v1771291143/CODPOD_EP4_Sev_Favourite_lines_16x9_hrektc.mov"
-              type="video/mp4"
-            />
-          </video>
-        </div>
+<section class="next">
+  <div class="label">— Next project</div>
+  <a href="ultra_miami_2026.html" class="next-link">Ultra <em>Miami</em></a>
+</section>
 
-        <div class="gallery-item">
-          <img
-            src="https://res.cloudinary.com/dozkrpikv/image/upload/q_auto,f_auto/v1771289830/OS_x_ATVI_COD_POD_Season_2_gpsp1i.jpg"
-            alt="CODPOD BTS"
-          />
-        </div>
+<footer>
+  <div>© 2026 Elvir Ali. All rights reserved.</div>
+  <div><a href="mailto:elviralinyc@gmail.com">elviralinyc@gmail.com</a></div>
+</footer>
 
-        <div class="gallery-row">
-          <div class="gallery-item half codpod-video">
-            <img
-              src="https://res.cloudinary.com/dozkrpikv/image/upload/q_auto,f_auto/v1771300180/CODPOD_9X16_mymerl.gif"
-              alt="CODPOD Studio"
-            />
-          </div>
-          <div class="gallery-item half">
-            <img
-              src="https://res.cloudinary.com/dozkrpikv/image/upload/q_auto,f_auto/v1771294723/s-blob-v1-IMAGE-GcQulMrxR4g_owf6ob.jpg"
-              alt="CODPOD Studio"
-            />
-            <img
-              src="https://res.cloudinary.com/dozkrpikv/image/upload/q_auto,f_auto/v1771294482/s-blob-v1-IMAGE-hi78y2n8s2A_vbys7l.jpg"
-              alt="CODPOD Studio"
-              style="padding-top: 10px;"
-          </div>
-        </div>
-      </section>
-
-      <div class="vertical-deco">CODPOD &mdash; 2025</div>
-    </main>
-
-    <a href="/projects/balad_beast_2026.html" class="next-project-link">
-      <span class="next-label">NEXT PROJECT</span>
-      <h2>BALAD BEAST 2026</h2>
-    </a>
-  </body>
+</body>
 </html>
