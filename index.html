@@ -23,6 +23,7 @@
   --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
   --serif: "Instrument Serif", "Times New Roman", serif;
   --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --slate-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill-rule='evenodd' d='M7.6 6.6 L9 4.2 h6 L16.4 6.6 H20 a1.8 1.8 0 0 1 1.8 1.8 v9.4 a1.8 1.8 0 0 1 -1.8 1.8 H4 a1.8 1.8 0 0 1 -1.8 -1.8 V8.4 a1.8 1.8 0 0 1 1.8 -1.8 z M12 9.4 a3.8 3.8 0 1 0 0.01 0 z'/></svg>");
 }
 
 * { box-sizing: border-box; }
@@ -139,6 +140,104 @@ a { color: inherit; text-decoration: none; }
   color: var(--ink-soft);
 }
 .hero-side b { color: var(--ink); font-weight: 500; }
+
+/* ── HERO + MAP LAYOUT ────────────────────────────── */
+.hero-grid {
+  grid-template-columns: minmax(0, 0.56fr) minmax(0, 1.44fr);
+  gap: clamp(20px, 2vw, 36px);
+  align-items: center;
+}
+.hero-lead { min-width: 0; }
+
+.hero-locs { margin-top: clamp(28px, 3.4vw, 44px); max-width: 48ch; }
+.hero-locs-head {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.hero-locs-head::before {
+  content: "";
+  width: 13px; height: 12px; flex: none;
+  background: var(--ink);
+  -webkit-mask: var(--slate-mask) center / contain no-repeat;
+          mask: var(--slate-mask) center / contain no-repeat;
+}
+.hero-locs-list {
+  margin: 13px 0 0;
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 2;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.hero-locs-list b { color: var(--ink); font-weight: 500; }
+
+/* dotted world map */
+.hero-map {
+  position: relative;
+  width: 100%;
+  overflow: visible;
+  color: var(--ink);
+}
+.fm-dots { width: 100%; height: auto; display: block; }
+.fm-dots circle { fill: var(--ink); opacity: 0.32; }
+.fm-arc {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  opacity: 0.38;
+}
+
+/* film-slate markers */
+.fm-marker {
+  position: absolute;
+  width: 0; height: 0;
+  z-index: 2;
+}
+.fm-marker .fm-slate {
+  position: absolute;
+  left: 0; top: 0;
+  width: 18px; height: 18px;
+  transform: translate(-50%, -100%);
+  transform-origin: 50% 100%;
+  color: var(--ink);
+  opacity: 1;
+  filter: drop-shadow(0 0 1.4px var(--bg)) drop-shadow(0 1px 1.4px rgba(22,22,22,.25));
+  transition: transform 0.28s cubic-bezier(0.2, 0.7, 0.2, 1);
+  cursor: default;
+}
+.fm-marker .fm-slate svg { width: 100%; height: 100%; display: block; }
+.fm-marker .fm-label {
+  position: absolute;
+  left: 12px; top: -19px;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--ink);
+  white-space: nowrap;
+  pointer-events: none;
+}
+.fm-marker.left .fm-label { left: auto; right: 12px; }
+.fm-marker:hover { z-index: 30; }
+.fm-marker:hover .fm-slate {
+  transform: translate(-50%, -100%) scale(1.22);
+}
+@keyframes fmPop {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fm-marker .fm-slate { animation: none; }
+}
 
 /* ── MARQUEE ──────────────────────────────────────── */
 .marquee {
@@ -483,6 +582,8 @@ body[data-type="serif"] .card-title { font-family: var(--serif); font-style: ita
 @media (max-width: 860px) {
   .nav { padding: 14px 20px; }
   .hero { padding: 56px 20px 40px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 36px; }
+  .hero-map { order: 2; max-width: 600px; }
   .hero-meta { grid-template-columns: 1fr; gap: 24px; }
   .hero-bio, .hero-side { grid-column: 1; }
   .work, .section-head, .about, .clients, .contact { padding-left: 20px; padding-right: 20px; }
@@ -636,8 +737,11 @@ body[data-type="serif"] .card-title { font-family: var(--serif); font-style: ita
 </nav>
 
 <header class="hero" data-screen-label="01 Hero">
-  <div class="hero-inner">
-    <h1 class="hero-title">Elvir Ali,<br/><em>Creative Producer</em>.</h1>
+  <div class="hero-inner hero-grid">
+    <div class="hero-lead">
+      <h1 class="hero-title">Elvir Ali,<br/><em>Creative Producer</em>.</h1>
+    </div>
+    <div class="hero-map" id="film-map" role="img" aria-label="World map of filming locations across 19 cities and 5 countries"></div>
   </div>
 </header>
 
@@ -1003,6 +1107,101 @@ function CardPortal({ p, index, hover }) {
 
 const root = ReactDOM.createRoot(document.getElementById("tweaks-root"));
 root.render(<App />);
+</script>
+
+<script>
+/* ── Filming-locations dotted world map ──────────────────────── */
+(function () {
+  var map = document.getElementById("film-map");
+  if (!map) return;
+
+  // full-world equirectangular
+  var LON0 = -168, LON1 = 180, LAT0 = 74, LAT1 = -54;
+  var W = 1000, H = Math.round((LAT0 - LAT1) / (LON1 - LON0) * W);
+  function X(lon) { return (lon - LON0) / (LON1 - LON0) * W; }
+  function Y(lat) { return (LAT0 - lat) / (LAT0 - LAT1) * H; }
+  function px(lon) { return (lon - LON0) / (LON1 - LON0) * 100; }
+  function py(lat) { return (LAT0 - lat) / (LAT0 - LAT1) * 100; }
+
+  // Stylised continent outlines [lon,lat]
+  var POLYS = [
+    /* North America */ [[-168,65],[-162,70],[-156,71],[-140,70],[-128,70],[-110,68],[-95,69],[-82,73],[-74,68],[-64,60],[-56,52],[-66,47],[-70,42],[-74,39],[-81,31],[-80,25],[-83,28],[-90,29],[-97,26],[-97,22],[-105,20],[-106,23],[-112,29],[-117,32],[-124,40],[-124,48],[-130,54],[-140,59],[-150,59],[-165,60]],
+    /* Central America */ [[-92,18],[-88,16],[-83,9],[-78,8],[-80,13],[-86,16],[-90,17]],
+    /* Greenland */ [[-46,60],[-30,60],[-20,70],[-30,83],[-55,82],[-58,70],[-50,62]],
+    /* South America */ [[-78,8],[-72,11],[-62,10],[-50,0],[-35,-5],[-38,-13],[-48,-25],[-58,-34],[-66,-44],[-70,-50],[-72,-44],[-71,-30],[-70,-18],[-78,-5],[-81,-2],[-80,3]],
+    /* Africa */ [[-16,15],[-10,28],[-5,36],[10,37],[25,32],[34,31],[43,11],[51,12],[42,-2],[40,-15],[35,-22],[25,-34],[18,-35],[12,-18],[8,4],[-8,5],[-16,12]],
+    /* Madagascar */ [[43,-13],[50,-16],[48,-25],[44,-22]],
+    /* Europe */ [[-10,36],[-9,44],[-2,49],[2,51],[-5,58],[10,59],[12,64],[28,66],[40,64],[40,50],[28,45],[24,40],[20,42],[14,44],[3,43],[-2,36]],
+    /* Scandinavia */ [[5,58],[8,58],[12,65],[20,70],[28,71],[30,66],[24,60],[18,58],[10,58]],
+    /* British Isles */ [[-7,50],[-2,52],[-5,58],[-1,59],[1,52],[-3,50]],
+    /* Iceland */ [[-24,64],[-14,64],[-14,66],[-22,66]],
+    /* Russia / N Asia */ [[40,64],[28,66],[30,70],[60,71],[90,75],[105,77],[130,73],[160,70],[170,66],[180,65],[180,60],[160,60],[145,58],[140,52],[135,48],[130,42],[122,40],[120,50],[108,52],[95,50],[88,49],[80,50],[60,52],[50,46],[48,50],[40,46],[40,55]],
+    /* China / East Asia */ [[88,49],[100,40],[108,38],[118,40],[122,40],[122,30],[120,24],[110,21],[100,22],[98,28],[90,30],[80,32],[75,35],[80,42]],
+    /* India */ [[68,24],[72,20],[75,8],[78,8],[80,13],[82,18],[88,22],[90,22],[88,26],[78,30],[72,28]],
+    /* Middle East / Arabia */ [[34,31],[36,37],[44,40],[50,40],[56,38],[58,30],[57,25],[52,16],[45,12],[43,13],[40,16],[35,28]],
+    /* SE Asia mainland */ [[98,28],[100,22],[106,21],[109,15],[105,10],[100,8],[98,12],[97,18],[96,24]],
+    /* Indonesia */ [[100,5],[110,3],[118,2],[120,-2],[115,-8],[105,-7],[100,-2]],
+    /* New Guinea */ [[131,-2],[145,-3],[150,-9],[140,-9],[132,-5]],
+    /* Japan */ [[130,32],[136,35],[140,38],[142,42],[140,40],[136,34],[131,31]],
+    /* Philippines */ [[120,6],[126,8],[126,16],[121,18],[120,12]],
+    /* Australia */ [[114,-22],[122,-18],[130,-12],[137,-12],[142,-11],[146,-18],[150,-25],[153,-30],[150,-37],[143,-39],[135,-35],[129,-32],[123,-34],[115,-34],[113,-26]],
+    /* New Zealand */ [[167,-44],[172,-41],[175,-37],[178,-38],[174,-42],[170,-46]]
+  ];
+
+  function pip(lon, lat, poly) {
+    var inside = false, j = poly.length - 1;
+    for (var i = 0; i < poly.length; j = i++) {
+      var xi = poly[i][0], yi = poly[i][1], xj = poly[j][0], yj = poly[j][1];
+      if (((yi > lat) !== (yj > lat)) &&
+          (lon < (xj - xi) * (lat - yi) / (yj - yi) + xi)) inside = !inside;
+    }
+    return inside;
+  }
+  function land(lon, lat) {
+    for (var k = 0; k < POLYS.length; k++) if (pip(lon, lat, POLYS[k])) return true;
+    return false;
+  }
+
+  var S = 1.7, dots = "";
+  for (var lat = LAT0; lat >= LAT1; lat -= S) {
+    for (var lon = LON0; lon <= LON1; lon += S) {
+      if (land(lon, lat)) dots += '<circle cx="' + X(lon).toFixed(1) + '" cy="' + Y(lat).toFixed(1) + '" r="1.05"/>';
+    }
+  }
+  var svg = '<svg class="fm-dots" viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="xMidYMid meet" aria-hidden="true">' + dots + '</svg>';
+
+  var PIN = '<svg viewBox="0 0 24 24" aria-hidden="true">' +
+    '<path d="M12 1.6 C7.4 1.6 3.7 5.3 3.7 9.9 c0 6 8.3 12.5 8.3 12.5 s8.3 -6.5 8.3 -12.5 c0 -4.6 -3.7 -8.3 -8.3 -8.3 z" fill="currentColor"/>' +
+    '<circle cx="12" cy="9.9" r="2.9" fill="#f4f1ec"/>' +
+    '</svg>';
+
+  // Curated, always-labelled set (matches reference): US by city, rest by country.
+  // [label, lon, lat, labelSide, labelDY(px)]
+  var PLACES = [
+    ["Seattle", -122.3, 47.6, "right", -3],
+    ["Los Angeles", -118.2, 34.0, "left", 6],
+    ["Las Vegas", -115.1, 36.2, "left", -7],
+    ["Dallas", -96.8, 32.8, "right", 4],
+    ["Chicago", -87.6, 41.9, "right", -6],
+    ["Boston", -71.1, 42.4, "right", 6],
+    ["Miami", -80.2, 25.8, "right", 4],
+    ["Canada", -100, 57, "left", -2],
+    ["England", -1.5, 51.5, "left", -3],
+    ["Germany", 13.4, 52.5, "right", 8],
+    ["Saudi Arabia", 39.2, 21.5, "right", 0],
+    ["Japan", 138.5, 37.0, "left", -2]
+  ];
+
+  var markers = PLACES.map(function (c) {
+    var dy = c[4] || 0;
+    return '<div class="fm-marker' + (c[3] === "left" ? " left" : "") +
+      '" style="left:' + px(c[1]).toFixed(2) + '%;top:' + py(c[2]).toFixed(2) + '%" tabindex="0">' +
+      '<span class="fm-slate">' + PIN + '</span>' +
+      '<span class="fm-label" style="top:' + (-19 + dy) + 'px">' + c[0] + '</span></div>';
+  }).join("");
+
+  map.innerHTML = svg + markers;
+})();
 </script>
 
 </body>
