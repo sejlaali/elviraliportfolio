@@ -376,13 +376,14 @@ a { color: inherit; text-decoration: none; }
   max-height: 58%;
   object-fit: contain;
   opacity: 0.96;
+  transform: scale(var(--logo-scale, 1));
   filter: drop-shadow(0 2px 24px rgba(0, 0, 0, 0.5));
   transition: opacity 0.5s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 .card-client-logo.is-white img {
   filter: brightness(0) invert(1) drop-shadow(0 2px 24px rgba(0, 0, 0, 0.5));
 }
-.card:hover .card-client-logo img { opacity: 1; transform: scale(1.03); }
+.card:hover .card-client-logo img { opacity: 1; transform: scale(calc(var(--logo-scale, 1) * 1.03)); }
 
 /* Hover variants */
 .card[data-hover="zoom"]:hover .card-img { transform: scale(1.04); }
@@ -613,6 +614,10 @@ body[data-type="serif"] .card-title { font-family: var(--serif); font-style: ita
   .grid { grid-template-columns: repeat(2, 1fr); row-gap: 40px; gap: 16px; }
   .grid[data-layout] .card { grid-column: span 1 !important; margin-top: 0 !important; }
   .grid[data-layout] .card .card-media { aspect-ratio: 4/5 !important; }
+  /* Narrow mobile cards can't fit large logo scales — cap so wide
+     wordmarks (e.g. Activision) don't overflow and get clipped. */
+  .card-client-logo img { transform: scale(min(var(--logo-scale, 1), 1.15)); }
+  .card:hover .card-client-logo img { transform: scale(min(var(--logo-scale, 1), 1.15)); }
   .about-inner { grid-template-columns: 1fr; }
   .about-portrait { grid-column: 1; max-width: 320px; }
   .about-body { grid-column: 1; padding-top: 0; }
@@ -1089,7 +1094,7 @@ function ProjectCard({ p, index, hover }) {
         )}
         {p.clientLogo ? (
           <div className={`card-client-logo${p.logoWhite ? " is-white" : ""}`} aria-hidden="true">
-            <img src={p.clientLogo} alt="" style={p.logoScale ? { transform: `scale(${p.logoScale})` } : null} />
+            <img src={p.clientLogo} alt="" style={p.logoScale ? { "--logo-scale": p.logoScale } : null} />
           </div>
         ) : null}
         <div className="card-overlay">
