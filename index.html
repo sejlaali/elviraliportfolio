@@ -338,7 +338,7 @@ a { color: inherit; text-decoration: none; }
   aspect-ratio: 16 / 10;
 }
 .grid[data-layout="three"] .card-media { aspect-ratio: 1 / 1; }
-.grid[data-layout="two"] .card-media { aspect-ratio: 16 / 10; }
+.grid[data-layout="two"] .card-media { aspect-ratio: 16 / 8.5; }
 
 .card-img {
   width: 100%;
@@ -859,15 +859,39 @@ const { useState, useEffect, useMemo } = React;
 
 const PROJECTS = [
   {
-    id: "balad_beast_2026",
-    title: "Balad Beast",
-    client: "MDL Beast",
+    id: "off_duty_2025",
+    title: "COD POD: Off Duty",
+    client: "Activision — Call of Duty",
     year: "2026",
-    tag: "Festival",
+    tag: "Podcast / Show",
     role: "Creative Producer",
-    image: "https://res.cloudinary.com/dozkrpikv/image/upload/q_auto,f_auto,w_1400/v1770955694/MDLBEAST2026_friday_ST_TYGA_0294_ocmcgb.jpg",
-    clientLogo: "https://res.cloudinary.com/dozkrpikv/image/upload/v1780332138/mdl-beast_enrmkl.png",
-    logoWhite: true
+    image: "https://i.ytimg.com/vi/061JRPXxcDs/maxresdefault.jpg",
+    clientLogo: "https://res.cloudinary.com/dozkrpikv/image/upload/activision_wkxpca.png",
+    logoWhite: true,
+    logoScale: 2.21
+  },
+  {
+    id: "mission_ahead_2026",
+    title: "The Mission Ahead",
+    client: "Activision",
+    year: "2025",
+    tag: "Developer Briefing",
+    role: "Creative Producer",
+    image: "https://i.ytimg.com/vi/rxFVywuWmJI/maxresdefault.jpg",
+    clientLogo: "https://res.cloudinary.com/dozkrpikv/image/upload/v1780332138/activision_wkxpca.png",
+    logoWhite: true,
+    logoScale: 2.21
+  },
+  {
+    id: "rap_caviar_2026",
+    title: "Spotify Rap Caviar",
+    client: "Spotify",
+    year: "2026",
+    tag: "Event",
+    role: "Creative Producer",
+    image: "https://res.cloudinary.com/dozkrpikv/image/upload/v1780332150/rc-sign_yuhqyv.jpg",
+    clientLogo: "https://res.cloudinary.com/dozkrpikv/image/upload/v1780332137/spotify-icon_fn654o.png",
+    logoScale: 0.98
   },
   {
     id: "ultra_miami_2026",
@@ -882,27 +906,15 @@ const PROJECTS = [
     logoScale: 0.84
   },
   {
-    id: "rap_caviar_2026",
-    title: "Spotify Rap Caviar",
-    client: "Spotify",
+    id: "balad_beast_2026",
+    title: "Balad Beast",
+    client: "MDL Beast",
     year: "2026",
-    tag: "Event",
+    tag: "Festival",
     role: "Creative Producer",
-    image: "https://res.cloudinary.com/dozkrpikv/image/upload/v1780332150/rc-sign_yuhqyv.jpg",
-    clientLogo: "https://res.cloudinary.com/dozkrpikv/image/upload/v1780332137/spotify-icon_fn654o.png",
-    logoScale: 0.98
-  },
-  {
-    id: "mission_ahead_2026",
-    title: "The Mission Ahead",
-    client: "Activision",
-    year: "2025",
-    tag: "Developer Briefing",
-    role: "Creative Producer",
-    image: "https://res.cloudinary.com/dozkrpikv/image/upload/v1780332136/mission-ahead_ptd04s.jpg",
-    clientLogo: "https://res.cloudinary.com/dozkrpikv/image/upload/v1780332138/activision_wkxpca.png",
-    logoWhite: true,
-    logoScale: 2.21
+    image: "https://res.cloudinary.com/dozkrpikv/image/upload/q_auto,f_auto,w_1400/v1770955694/MDLBEAST2026_friday_ST_TYGA_0294_ocmcgb.jpg",
+    clientLogo: "https://res.cloudinary.com/dozkrpikv/image/upload/v1780332138/mdl-beast_enrmkl.png",
+    logoWhite: true
   },
   {
     id: "codpod_s2_2025",
