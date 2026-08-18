@@ -611,7 +611,7 @@ body[data-type="serif"] .card-title { font-family: var(--serif); font-style: ita
   .hero-meta { grid-template-columns: 1fr; gap: 24px; }
   .hero-bio, .hero-side { grid-column: 1; }
   .work, .section-head, .about, .clients, .contact { padding-left: 20px; padding-right: 20px; }
-  .grid { grid-template-columns: repeat(2, 1fr); row-gap: 40px; gap: 16px; }
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 40px; gap: 16px; }
   .grid[data-layout] .card { grid-column: span 1 !important; margin-top: 0 !important; }
   .grid[data-layout] .card .card-media { aspect-ratio: 16/9 !important; }
   /* Narrow mobile cards can't fit large logo scales — cap so wide
