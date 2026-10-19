@@ -156,11 +156,11 @@ img, video { display: block; max-width: 100%; }
   text-transform: uppercase; color: var(--ink-soft);
 }
 
-.gallery { max-width: 1440px; margin: 0 auto 96px; padding: 0 32px; display: grid; grid-template-columns: repeat(6, 1fr); gap: 24px; }
+.gallery { max-width: 1440px; margin: 0 auto 96px; padding: 0 32px; display: grid; grid-template-columns: repeat(6, 1fr); gap: 24px; align-items: start; }
 .gallery figure { margin: 0; background: var(--bg-alt); overflow: hidden; }
-.gallery figure.wide { grid-column: span 6; aspect-ratio: 16/9; }
-.gallery figure.half { grid-column: span 3; aspect-ratio: 4/5; }
-.gallery img { width: 100%; height: 100%; object-fit: cover; }
+.gallery figure.wide { grid-column: span 6; }
+.gallery figure.half { grid-column: span 3; }
+.gallery img { width: 100%; height: auto; display: block; }
 
 .video-block {
   max-width: 1440px; margin: 0 auto 96px; padding: 0 32px;
@@ -219,12 +219,12 @@ footer { border-top: 1px solid var(--rule); padding: 24px 32px; font-family: var
 <header class="head">
   <div class="crumb"><span>Project 13 / 16</span><span>·</span><b>Esports / Launch</b></div>
   <div class="eyebrow">2024 — Esports — Global</div>
-  <h1 class="title">World Series of <em>Warzone.</em></h1>
+  <h1 class="title">World Series of Warzone.</h1>
   <div class="meta-row">
     <div class="meta-cell"><div class="k">Client</div><div class="v">Call of Duty — Activision</div></div>
     <div class="meta-cell"><div class="k">Year</div><div class="v">2024</div></div>
     <div class="meta-cell"><div class="k">Role</div><div class="v">Director</div></div>
-    <div class="meta-cell"><div class="k">Location</div><div class="v">Global</div></div>
+    <div class="meta-cell"><div class="k">Location</div><div class="v">LA</div></div>
   </div>
 </header>
 
@@ -258,6 +258,8 @@ footer { border-top: 1px solid var(--rule); padding: 24px 32px; font-family: var
     <figure class="half"><img src="https://res.cloudinary.com/dozkrpikv/image/upload/q_auto,f_auto,w_1400/v1771281559/15_xanu0r.png" alt="" loading="lazy" /></figure>
     <figure class="half"><img src="https://res.cloudinary.com/dozkrpikv/image/upload/q_auto,f_auto,w_1400/v1771281897/1_qpbpzt.png" alt="" loading="lazy" /></figure>
     <figure class="half"><img src="https://res.cloudinary.com/dozkrpikv/image/upload/q_auto,f_auto,w_1400/v1771281892/9_no9zja.png" alt="" loading="lazy" /></figure>
+    <figure class="half"><img src="../assets/wsow/bts-1.jpg" alt="On set with cast in costume during the World Series of Warzone shoot" loading="lazy" /></figure>
+    <figure class="half"><img src="../assets/wsow/bts-2.jpg" alt="Cast and crew on the airplane set during the World Series of Warzone shoot" loading="lazy" /></figure>
 </section>
 
 <section class="next">
