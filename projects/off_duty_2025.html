@@ -84,7 +84,7 @@ img, video { display: block; max-width: 100%; }
 .role-block .col { grid-column: span 6; display: grid; grid-template-columns: 120px 1fr; gap: 24px; padding-top: 28px; border-top: 1px solid var(--rule); }
 .role-block .lbl { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); }
 .role-block .txt { font-size: 16px; line-height: 1.55; max-width: 52ch; }
-.video-grid { max-width: 1440px; margin: 0 auto 96px; padding: 0 32px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.video-grid { max-width: 1120px; margin: 0 auto 96px; padding: 0 32px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
 .video-thumb { position: relative; display: block; aspect-ratio: 16/9; background: #000; overflow: hidden; border: 1px solid rgba(22,22,22,0.06); }
 .video-thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.2,0.7,0.2,1); }
 .video-thumb::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.55) 100%); pointer-events: none; }
@@ -93,6 +93,11 @@ img, video { display: block; max-width: 100%; }
 .video-thumb .cap { position: absolute; left: 12px; bottom: 12px; z-index: 2; font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #fff; }
 .video-thumb:hover img { transform: scale(1.04); }
 .video-thumb:hover .play { transform: translate(-50%, -50%) scale(1.08); background: #fff; }
+.body-copy { grid-column: 2 / span 8; font-size: 17px; line-height: 1.6; color: var(--ink-soft); margin: 28px 0 0; }
+.body-copy strong, .lede strong { color: var(--ink); font-weight: 600; }
+.shots { max-width: 1440px; margin: 0 auto 96px; padding: 0 32px; display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; gap: 20px; }
+.shots figure { margin: 0; background: var(--bg-alt); overflow: hidden; border: 1px solid rgba(22,22,22,0.06); }
+.shots img { display: block; height: 340px; width: auto; max-width: 100%; object-fit: cover; }
 .next { border-top: 1px solid var(--rule); padding: 64px 32px; max-width: 1440px; margin: 0 auto; display: flex; justify-content: space-between; align-items: end; gap: 24px; }
 .next .label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); }
 .next a.next-link { font-family: var(--sans); font-size: clamp(32px, 4vw, 64px); line-height: 1; letter-spacing: -0.03em; display: inline-flex; align-items: baseline; gap: 16px; }
@@ -107,6 +112,9 @@ footer { border-top: 1px solid var(--rule); padding: 24px 32px; font-family: var
   .meta-cell { grid-column: span 1; }
   .body { grid-template-columns: 1fr; }
   .lede, .credits { grid-column: 1; }
+  .body-copy { grid-column: 1; }
+  .shots { padding-left: 20px; padding-right: 20px; }
+  .shots img { height: auto; width: 100%; }
   .role-block .col { grid-template-columns: 1fr; gap: 8px; grid-column: 1 / -1; }
   .video-grid { grid-template-columns: 1fr; }
   .next { flex-direction: column; align-items: flex-start; gap: 16px; }
@@ -161,12 +169,8 @@ footer { border-top: 1px solid var(--rule); padding: 24px 32px; font-family: var
   <div class="stat"><div class="v">10K+</div><div class="l">Likes</div></div>
 </section>
 <section class="body">
-  <p class="lede">A new Call of Duty spin-off series - <em>Off Duty</em> steps away from the news cycle for shorter, more personal conversations: the makers, the music, and the studio heads behind the games, in a looser, off-the-clock format.</p>
-</section>
-<section class="hero-img" style="margin: 24px auto 88px;">
-  <figure>
-    <img src="../assets/off_duty/bts-studio.jpg" alt="On set for COD POD: Off Duty — host and guest in conversation at the studio" loading="lazy" />
-  </figure>
+  <p class="lede"><strong>Off Duty</strong> — an original Call of Duty interview series built to explore the people and creative minds behind the franchise. The series brought together developers, artists, musicians, studio leaders, and other voices from across the Call of Duty world for conversations that went beyond the game itself.</p>
+  <p class="body-copy">Each episode created room to explore the people behind the work, from their creative process and personal influences to their careers, interests, and experiences within the industry. The format was intentionally more relaxed and personality-driven, allowing the conversations to feel less like traditional game interviews and more like a look into the people who help shape the culture around Call of Duty.</p>
 </section>
 <section class="video-grid">
   <a class="video-thumb" href="https://www.youtube.com/watch?v=xQ0hR2dczGM" target="_blank" rel="noopener">
@@ -179,6 +183,14 @@ footer { border-top: 1px solid var(--rule); padding: 24px 32px; font-family: var
     <span class="play" aria-hidden="true"></span>
     <span class="cap">— Ep 002 · Rapid-fire: Infinity Ward · 57K views</span>
   </a>
+</section>
+<section class="shots">
+  <figure>
+    <img src="../assets/off_duty/bts-studio.jpg" alt="On set for COD POD: Off Duty — host and guest in conversation at the studio" loading="lazy" />
+  </figure>
+  <figure>
+    <img src="../assets/off_duty/set-wide.jpg" alt="Behind the scenes on the COD POD: Off Duty set — lighting, cameras and crew" loading="lazy" />
+  </figure>
 </section>
 <section class="next">
   <div class="label">— Next project</div>
