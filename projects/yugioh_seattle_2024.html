@@ -70,13 +70,14 @@ img, video { display: block; max-width: 100%; }
 
 .gallery {
   max-width: 1440px; margin: 0 auto 96px; padding: 0 32px;
-  display: grid; grid-template-columns: repeat(6, 1fr); gap: 24px;
 }
 .gallery figure { margin: 0; background: var(--bg-alt); overflow: hidden; }
-.gallery figure.wide { grid-column: span 6; aspect-ratio: 16/9; }
-.gallery figure.tall { grid-column: span 2; aspect-ratio: 3/4; }
-.gallery figure.land { grid-column: span 4; aspect-ratio: 4/3; }
-.gallery img { width: 100%; height: 100%; object-fit: cover; }
+.gallery .hero { margin-bottom: 24px; aspect-ratio: 16/9; }
+.gallery .hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.gallery .masonry { column-count: 2; column-gap: 24px; }
+.gallery .masonry figure { break-inside: avoid; margin: 0 0 24px; }
+.gallery .masonry img { width: 100%; height: auto; display: block; }
+@media (max-width: 860px) { .gallery .masonry { column-count: 1; } }
 
 .video-block {
   max-width: 1440px; margin: 0 auto 96px; padding: 0 32px;
@@ -345,11 +346,13 @@ footer { border-top: 1px solid var(--rule); padding: 24px 32px; font-family: var
 </section>
 
 <section class="gallery">
-  <figure class="wide"><img src="https://res.cloudinary.com/dozkrpikv/image/upload/v1780332141/yugioh-group_qstzsq.png" alt="Yu-Gi-Oh! World Championship 2024 — Group photo" /></figure>
-  <figure class="tall"><img src="https://res.cloudinary.com/dozkrpikv/image/upload/v1780332139/champion-portrait_zvyhgc.png" alt="Champion portrait with trophy" /></figure>
-  <figure class="wide" style="aspect-ratio:auto;"><img src="../assets/yugioh/selfie.jpg" alt="Yu-Gi-Oh! World Championship 2024 — crew and competitors celebrating" style="height:auto;" loading="lazy" /></figure>
-  <figure style="grid-column: span 3; aspect-ratio:auto; align-self:start;"><img src="../assets/yugioh/team.jpg" alt="Yu-Gi-Oh! World Championship 2024 — production team group photo" style="height:auto;" loading="lazy" /></figure>
-  <figure style="grid-column: span 3; aspect-ratio:auto; align-self:start;"><img src="../assets/yugioh/champion-tears.jpg" alt="Competitor in tears holding the Yu-Gi-Oh! World Championship trophy" style="height:auto;" loading="lazy" /></figure>
+  <figure class="hero"><img src="https://res.cloudinary.com/dozkrpikv/image/upload/v1780332141/yugioh-group_qstzsq.png" alt="Yu-Gi-Oh! World Championship 2024 — Group photo" /></figure>
+  <div class="masonry">
+    <figure><img src="../assets/yugioh/selfie.jpg" alt="Yu-Gi-Oh! World Championship 2024 — crew and competitors celebrating" loading="lazy" /></figure>
+    <figure><img src="https://res.cloudinary.com/dozkrpikv/image/upload/v1780332139/champion-portrait_zvyhgc.png" alt="Champion portrait with trophy" loading="lazy" /></figure>
+    <figure><img src="../assets/yugioh/team.jpg" alt="Yu-Gi-Oh! World Championship 2024 — production team group photo" loading="lazy" /></figure>
+    <figure><img src="../assets/yugioh/champion-tears.jpg" alt="Competitor in tears holding the Yu-Gi-Oh! World Championship trophy" loading="lazy" /></figure>
+  </div>
 </section>
 
 
