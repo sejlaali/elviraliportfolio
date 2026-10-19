@@ -94,9 +94,9 @@ img, video { display: block; max-width: 100%; }
 .video-thumb:hover img { transform: scale(1.04); }
 .video-thumb:hover .play { transform: translate(-50%, -50%) scale(1.08); background: #fff; }
 .bts-cap { max-width: 1440px; margin: 0 auto; padding: 0 32px 24px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); display: flex; justify-content: space-between; }
-.bts-grid { max-width: 1440px; margin: 0 auto 96px; padding: 0 32px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-.bts-grid figure { margin: 0; background: var(--bg-alt); overflow: hidden; aspect-ratio: 3/4; }
-.bts-grid img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s cubic-bezier(0.2,0.7,0.2,1); }
+.bts-grid { max-width: 1440px; margin: 0 auto 96px; padding: 0 32px; column-count: 2; column-gap: 24px; }
+.bts-grid figure { margin: 0 0 24px; background: var(--bg-alt); overflow: hidden; break-inside: avoid; }
+.bts-grid img { width: 100%; height: auto; display: block; transition: transform 0.7s cubic-bezier(0.2,0.7,0.2,1); }
 .bts-grid figure:hover img { transform: scale(1.03); }
 .next { border-top: 1px solid var(--rule); padding: 64px 32px; max-width: 1440px; margin: 0 auto; display: flex; justify-content: space-between; align-items: end; gap: 24px; }
 .next .label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); }
@@ -114,7 +114,7 @@ footer { border-top: 1px solid var(--rule); padding: 24px 32px; font-family: var
   .lede, .credits { grid-column: 1; }
   .role-block .col { grid-template-columns: 1fr; gap: 8px; grid-column: 1 / -1; }
   .video-grid { grid-template-columns: 1fr; }
-  .bts-grid { grid-template-columns: 1fr; padding: 0 20px; }
+  .bts-grid { column-count: 1; padding: 0 20px; }
   .bts-cap { padding: 0 20px 16px; }
   .next { flex-direction: column; align-items: flex-start; gap: 16px; }
   footer { padding: 20px; flex-direction: column; gap: 8px; }
@@ -147,12 +147,12 @@ footer { border-top: 1px solid var(--rule); padding: 24px 32px; font-family: var
 <header class="head">
   <div class="crumb"><span>Project 04 / 16</span><span>·</span><b>Developer Briefing</b></div>
   <div class="eyebrow">2025 — Developer Briefing — Activision</div>
-  <h1 class="title">The Mission <em>Ahead.</em></h1>
+  <h1 class="title">The Mission Ahead.</h1>
   <div class="meta-row">
     <div class="meta-cell"><div class="k">Client</div><div class="v">Activision</div></div>
     <div class="meta-cell"><div class="k">Year</div><div class="v">2025</div></div>
     <div class="meta-cell"><div class="k">Role</div><div class="v">Creative Producer</div></div>
-    <div class="meta-cell"><div class="k">Location</div><div class="v">Multi-location</div></div>
+    <div class="meta-cell"><div class="k">Location</div><div class="v">LA</div></div>
   </div>
 </header>
 <section class="hero-img">
@@ -168,15 +168,18 @@ footer { border-top: 1px solid var(--rule); padding: 24px 32px; font-family: var
   <div class="stat"><div class="v">BO7</div><div class="l">Black Ops 7 · Season 01</div></div>
 </section>
 <section class="body">
-  <p class="lede">A behind-the-scenes developer briefing on the mission ahead - and how the team built its biggest Season 01 yet for Call of Duty: Black Ops 7 and Warzone 2026.</p>
+  <p class="lede">A behind-the-scenes developer briefing exploring the roadmap for Season 01 of Call of Duty: Black Ops 7 and Warzone 2026. The piece takes players inside the development process, bringing together the teams behind Multiplayer, Zombies, Warzone, and global progression systems to break down the new content, features, and experiences shaping the season ahead. Built around developer insights and a closer look at the work behind each update, the briefing offers an inside perspective on the planning, creative decisions, and development efforts behind one of the biggest seasonal launches in Call of Duty.</p>
 </section>
 <div class="bts-cap">
   <span>— Behind the scenes</span>
-  <span>On set · Multi-location shoot</span>
+  <span>On set · LA</span>
 </div>
 <section class="bts-grid">
-  <figure><img src="https://res.cloudinary.com/dozkrpikv/image/upload/v1780332143/bts1_l8rwsp.png" alt="On-set monitors during a developer interview, Zombies creature build in the background" loading="lazy" /></figure>
-  <figure><img src="https://res.cloudinary.com/dozkrpikv/image/upload/v1780332143/bts2_ksjw4j.png" alt="Developer interview playback on monitors on the briefing set" loading="lazy" /></figure>
+  <figure><img src="../assets/mission_ahead/bts-1.jpg" alt="Director's monitors showing a developer interview on the briefing set" loading="lazy" /></figure>
+  <figure><img src="../assets/mission_ahead/bts-2.jpg" alt="Lighting and set build in the theater space for the developer briefing" loading="lazy" /></figure>
+  <figure><img src="../assets/mission_ahead/bts-3.jpg" alt="Camera operator and monitors during a developer interview take" loading="lazy" /></figure>
+  <figure><img src="../assets/mission_ahead/bts-4.jpg" alt="Developer interview framed up on a director's monitor" loading="lazy" /></figure>
+  <figure><img src="../assets/mission_ahead/bts-5.jpg" alt="On-set monitors with a developer interview and a Zombies creature build behind" loading="lazy" /></figure>
 </section>
 
 <div class="bts-cap" style="margin-bottom: 80px">
