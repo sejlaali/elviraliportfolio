@@ -230,8 +230,23 @@ a { color: inherit; text-decoration: none; }
   pointer-events: none;
 }
 .fm-marker.left .fm-label { left: auto; right: 12px; }
-.hero-map-title { display: none; }
-.hero-map-places { display: none; }
+.hero-map .fm-label { display: none; }
+.hero-right { min-width: 0; }
+.hero-map-title {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink-soft); margin: 0 0 16px;
+  display: flex; align-items: center; gap: 9px;
+}
+.hero-map-title::before {
+  content: ""; width: 13px; height: 12px; flex: none;
+  background: var(--ink);
+  -webkit-mask: var(--slate-mask) center / contain no-repeat;
+          mask: var(--slate-mask) center / contain no-repeat;
+}
+.hero-map-places {
+  margin: 18px 0 0; font-family: var(--mono); font-size: 12px; line-height: 1.95;
+  letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-soft);
+}
 .fm-marker:hover { z-index: 30; }
 .fm-marker:hover .fm-slate {
   transform: translate(-50%, -100%) scale(1.22);
@@ -610,10 +625,9 @@ body[data-type="serif"] .card-title { font-family: var(--serif); font-style: ita
   .hero { padding: 56px 20px 40px; }
   .hero-grid { grid-template-columns: 1fr; gap: 36px; }
   .hero-map { max-width: 600px; }
-  .hero-map .fm-label { display: none; }
   .hero-map .fm-marker .fm-slate { width: 13px; height: 13px; }
-  .hero-map-title { display: block; margin: 4px 0 0; font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); }
-  .hero-map-places { display: block; margin: 16px 0 0; font-family: var(--mono); font-size: 10px; line-height: 1.9; letter-spacing: 0.07em; text-transform: uppercase; color: var(--ink-soft); }
+  .hero-map-title { margin-bottom: 12px; }
+  .hero-map-places { font-size: 10px; line-height: 1.9; letter-spacing: 0.06em; }
   .hero-meta { grid-template-columns: 1fr; gap: 24px; }
   .hero-bio, .hero-side { grid-column: 1; }
   .work, .section-head, .about, .clients, .contact { padding-left: 20px; padding-right: 20px; }
@@ -783,9 +797,11 @@ body[data-type="serif"] .card-title { font-family: var(--serif); font-style: ita
     <div class="hero-lead">
       <h1 class="hero-title">Elvir Ali,<br/><em>Creative Producer</em>.</h1>
     </div>
-    <p class="hero-map-title">Produced around the world</p>
-    <div class="hero-map" id="film-map" role="img" aria-label="World map of filming locations around the world"></div>
-    <p class="hero-map-places">Seattle · Los Angeles · Las Vegas · Dallas · Chicago · Boston · Miami · Ottawa · London · Berlin · Riyadh · Tokyo</p>
+    <div class="hero-right">
+      <p class="hero-map-title">Global Network</p>
+      <div class="hero-map" id="film-map" role="img" aria-label="World map of a global production network across 19 cities"></div>
+      <p class="hero-map-places">New York · Seattle · San Francisco · Los Angeles · Las Vegas · Dallas · Houston · Chicago · Indianapolis · Atlanta · Miami · Toronto · Boston · Ottawa · London · Berlin · Riyadh · Bangkok · Tokyo</p>
+    </div>
   </div>
 </header>
 
@@ -1245,17 +1261,24 @@ root.render(<App />);
   // Curated, always-labelled set (matches reference): US by city, rest by country.
   // [label, lon, lat, labelSide, labelDY(px)]
   var PLACES = [
+    ["New York", -74.0, 40.7, "right", 2],
     ["Seattle", -122.3, 47.6, "right", -3],
+    ["San Francisco", -122.4, 37.8, "left", 2],
     ["Los Angeles", -118.2, 34.0, "left", 6],
     ["Las Vegas", -115.1, 36.2, "left", -7],
     ["Dallas", -96.8, 32.8, "right", 4],
-    ["Chicago", -87.6, 41.9, "right", -6],
-    ["Boston", -71.1, 42.4, "right", 6],
+    ["Houston", -95.4, 29.8, "left", 4],
+    ["Chicago", -87.6, 41.9, "left", -6],
+    ["Indianapolis", -86.2, 39.8, "right", 6],
+    ["Atlanta", -84.4, 33.7, "right", 2],
     ["Miami", -80.2, 25.8, "right", 4],
+    ["Toronto", -79.4, 43.7, "right", -8],
+    ["Boston", -71.1, 42.4, "right", 6],
     ["Ottawa", -75.7, 45.4, "left", -10],
     ["London", -0.13, 51.5, "left", -3],
     ["Berlin", 13.4, 52.5, "right", 8],
     ["Riyadh", 46.7, 24.7, "right", 0],
+    ["Bangkok", 100.5, 13.75, "right", 2],
     ["Tokyo", 139.7, 35.7, "left", -2]
   ];
 
