@@ -230,6 +230,7 @@ a { color: inherit; text-decoration: none; }
   pointer-events: none;
 }
 .fm-marker.left .fm-label { left: auto; right: 12px; }
+.hero-map-places { display: none; }
 .fm-marker:hover { z-index: 30; }
 .fm-marker:hover .fm-slate {
   transform: translate(-50%, -100%) scale(1.22);
@@ -608,6 +609,9 @@ body[data-type="serif"] .card-title { font-family: var(--serif); font-style: ita
   .hero { padding: 56px 20px 40px; }
   .hero-grid { grid-template-columns: 1fr; gap: 36px; }
   .hero-map { order: 2; max-width: 600px; }
+  .hero-map .fm-label { display: none; }
+  .hero-map .fm-marker .fm-slate { width: 13px; height: 13px; }
+  .hero-map-places { display: block; margin: 18px 0 0; font-family: var(--mono); font-size: 10px; line-height: 1.9; letter-spacing: 0.07em; text-transform: uppercase; color: var(--ink-soft); }
   .hero-meta { grid-template-columns: 1fr; gap: 24px; }
   .hero-bio, .hero-side { grid-column: 1; }
   .work, .section-head, .about, .clients, .contact { padding-left: 20px; padding-right: 20px; }
@@ -778,13 +782,14 @@ body[data-type="serif"] .card-title { font-family: var(--serif); font-style: ita
       <h1 class="hero-title">Elvir Ali,<br/><em>Creative Producer</em>.</h1>
     </div>
     <div class="hero-map" id="film-map" role="img" aria-label="World map of filming locations across 19 cities and 5 countries"></div>
+    <p class="hero-map-places">Seattle · Los Angeles · Las Vegas · Dallas · Chicago · Boston · Miami · Canada · England · Germany · Saudi Arabia · Japan</p>
   </div>
 </header>
 
 <section id="work" data-screen-label="02 Work">
   <div class="section-head">
     <div>Selected Work</div>
-    <div>16 / 16</div>
+    <div>18 / 18</div>
   </div>
 
   <div class="work">
