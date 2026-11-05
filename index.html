@@ -230,6 +230,7 @@ a { color: inherit; text-decoration: none; }
   pointer-events: none;
 }
 .fm-marker.left .fm-label { left: auto; right: 12px; }
+.hero-map-title { display: none; }
 .hero-map-places { display: none; }
 .fm-marker:hover { z-index: 30; }
 .fm-marker:hover .fm-slate {
@@ -608,10 +609,11 @@ body[data-type="serif"] .card-title { font-family: var(--serif); font-style: ita
   .nav { padding: 14px 20px; }
   .hero { padding: 56px 20px 40px; }
   .hero-grid { grid-template-columns: 1fr; gap: 36px; }
-  .hero-map { order: 2; max-width: 600px; }
+  .hero-map { max-width: 600px; }
   .hero-map .fm-label { display: none; }
   .hero-map .fm-marker .fm-slate { width: 13px; height: 13px; }
-  .hero-map-places { display: block; margin: 18px 0 0; font-family: var(--mono); font-size: 10px; line-height: 1.9; letter-spacing: 0.07em; text-transform: uppercase; color: var(--ink-soft); }
+  .hero-map-title { display: block; margin: 4px 0 0; font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); }
+  .hero-map-places { display: block; margin: 16px 0 0; font-family: var(--mono); font-size: 10px; line-height: 1.9; letter-spacing: 0.07em; text-transform: uppercase; color: var(--ink-soft); }
   .hero-meta { grid-template-columns: 1fr; gap: 24px; }
   .hero-bio, .hero-side { grid-column: 1; }
   .work, .section-head, .about, .clients, .contact { padding-left: 20px; padding-right: 20px; }
@@ -781,8 +783,9 @@ body[data-type="serif"] .card-title { font-family: var(--serif); font-style: ita
     <div class="hero-lead">
       <h1 class="hero-title">Elvir Ali,<br/><em>Creative Producer</em>.</h1>
     </div>
-    <div class="hero-map" id="film-map" role="img" aria-label="World map of filming locations across 19 cities and 5 countries"></div>
-    <p class="hero-map-places">Seattle · Los Angeles · Las Vegas · Dallas · Chicago · Boston · Miami · Canada · England · Germany · Saudi Arabia · Japan</p>
+    <p class="hero-map-title">Produced around the world</p>
+    <div class="hero-map" id="film-map" role="img" aria-label="World map of filming locations around the world"></div>
+    <p class="hero-map-places">Seattle · Los Angeles · Las Vegas · Dallas · Chicago · Boston · Miami · Ottawa · London · Berlin · Riyadh · Tokyo</p>
   </div>
 </header>
 
@@ -1249,11 +1252,11 @@ root.render(<App />);
     ["Chicago", -87.6, 41.9, "right", -6],
     ["Boston", -71.1, 42.4, "right", 6],
     ["Miami", -80.2, 25.8, "right", 4],
-    ["Canada", -100, 57, "left", -2],
-    ["England", -1.5, 51.5, "left", -3],
-    ["Germany", 13.4, 52.5, "right", 8],
-    ["Saudi Arabia", 39.2, 21.5, "right", 0],
-    ["Japan", 138.5, 37.0, "left", -2]
+    ["Ottawa", -75.7, 45.4, "left", -10],
+    ["London", -0.13, 51.5, "left", -3],
+    ["Berlin", 13.4, 52.5, "right", 8],
+    ["Riyadh", 46.7, 24.7, "right", 0],
+    ["Tokyo", 139.7, 35.7, "left", -2]
   ];
 
   var markers = PLACES.map(function (c) {
