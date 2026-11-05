@@ -626,8 +626,9 @@ body[data-type="serif"] .card-title { font-family: var(--serif); font-style: ita
   .hero-grid { grid-template-columns: 1fr; gap: 36px; }
   .hero-map { max-width: 600px; }
   .hero-map .fm-marker .fm-slate { width: 13px; height: 13px; }
-  .hero-map-title { margin-bottom: 12px; }
-  .hero-map-places { font-size: 10px; line-height: 1.9; letter-spacing: 0.06em; }
+  .hero-map-title { margin-bottom: 12px; justify-content: center; text-align: center; }
+  .hero-map-title::before { display: none; }
+  .hero-map-places { font-size: 10px; line-height: 1.9; letter-spacing: 0.06em; text-align: center; text-wrap: balance; }
   .hero-meta { grid-template-columns: 1fr; gap: 24px; }
   .hero-bio, .hero-side { grid-column: 1; }
   .work, .section-head, .about, .clients, .contact { padding-left: 20px; padding-right: 20px; }
