@@ -235,17 +235,12 @@ a { color: inherit; text-decoration: none; }
 .hero-map-title {
   font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em;
   text-transform: uppercase; color: var(--ink-soft); margin: 0 0 16px;
-  display: flex; align-items: center; gap: 9px;
-}
-.hero-map-title::before {
-  content: ""; width: 13px; height: 12px; flex: none;
-  background: var(--ink);
-  -webkit-mask: var(--slate-mask) center / contain no-repeat;
-          mask: var(--slate-mask) center / contain no-repeat;
+  text-align: center;
 }
 .hero-map-places {
   margin: 18px 0 0; font-family: var(--mono); font-size: 12px; line-height: 1.95;
   letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-soft);
+  text-align: center; text-wrap: balance;
 }
 .fm-marker:hover { z-index: 30; }
 .fm-marker:hover .fm-slate {
@@ -626,9 +621,8 @@ body[data-type="serif"] .card-title { font-family: var(--serif); font-style: ita
   .hero-grid { grid-template-columns: 1fr; gap: 36px; }
   .hero-map { max-width: 600px; }
   .hero-map .fm-marker .fm-slate { width: 13px; height: 13px; }
-  .hero-map-title { margin-bottom: 12px; justify-content: center; text-align: center; }
-  .hero-map-title::before { display: none; }
-  .hero-map-places { font-size: 10px; line-height: 1.9; letter-spacing: 0.06em; text-align: center; text-wrap: balance; }
+  .hero-map-title { margin-bottom: 12px; }
+  .hero-map-places { font-size: 10px; line-height: 1.9; letter-spacing: 0.06em; }
   .hero-meta { grid-template-columns: 1fr; gap: 24px; }
   .hero-bio, .hero-side { grid-column: 1; }
   .work, .section-head, .about, .clients, .contact { padding-left: 20px; padding-right: 20px; }
